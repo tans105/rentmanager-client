@@ -14,7 +14,8 @@ angular.module('myApp.register', ['ngRoute'])
 
   var registerSuccess=function(response){
     if(angular.isDefined(response)){
-      if(response.data.success=='true'){
+      console.log(response);
+      if(response.data.success){
         $location.path('#/login');
       }
       else{
