@@ -4,14 +4,14 @@ angular.module('myApp.register', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/register', {
-    templateUrl: 'register/register.html',
+    templateUrl: 'app-modules/register/register.html',
     controller: 'RegisterCtrl'
   });
 }])
 
 .controller('RegisterCtrl', function($scope,$location,registerService) {
   console.log("register controller reporting on duty");
-
+  $scope.hasError=false;
   var registerSuccess=function(response){
     if(angular.isDefined(response)){
       console.log(response);
@@ -28,9 +28,17 @@ angular.module('myApp.register', ['ngRoute'])
     }
   }
   $scope.register=function(user){
-    console.log(user);
-    if(user.password!=user.confirmPassword){
-      alert("mismatch");
+    if(typeof user =='undefined'){
+      $scope.hasError=true;
+      $scope.errorMsg='All Fields are mandatory'
+    }
+    else if(typeof user.email=='undefined' || typeof user.password=='undefined' || typeof user.confirmPassword=='undefined'){
+      $scope.hasError=true;
+      $scope.errorMsg='All Fields are mandatory'
+    }
+    else if(user.password!=user.confirmPassword){
+      $scope.hasError=true;
+      $scope.errorMsg='Password should match with confirm Password';
     }
     else{
       registerService.registerUser(user.email,user.password,registerSuccess);
