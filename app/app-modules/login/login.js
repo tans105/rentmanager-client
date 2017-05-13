@@ -1,23 +1,23 @@
 'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
 
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/login', {
-            templateUrl: 'app-modules/login/login.html',
-            controller: 'LoginCtrl'
-        });
-    }])
 
-    .controller('LoginCtrl', function ($scope, $location, loginService) {
+
+    appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cookies) {
         console.log("Login controller reporting on duty");
-
+        $scope.user = {
+            email : 'tanmayawasthi105@gmail.com',
+            password : 'password'
+        }
         var loginSuccess = function (data) {
             console.log(data);
-            if (angular.isDefined(data)) {
-                alert("Successful Login");
-
-                // $cookies.set("tokenId", data.token);
+            if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
+                console.log("Successful Login");
+                var today = new Date();
+                var expiresValue = new Date(today);
+                expiresValue.setMinutes(today.getMinutes() + 10);
+                $cookies.putObject("isLoggedIn", true, {'expires' : expiresValue});
+                $state.go('home');
             }
         };
 
@@ -32,9 +32,9 @@ angular.module('myApp.login', ['ngRoute'])
                 $scope.inputType = 'password';
         };
 
-    })
+    });
 
-    .service('loginService', function ($http) {
+    appModule.service('loginService', function ($http) {
 
         this.loginValidation = function (email, pwd, callback) {
             $http({

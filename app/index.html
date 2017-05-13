@@ -33,18 +33,23 @@
     <h2 style="color: white;">RENT MANAGER</h2>
   </div>-->
 
-  <div ng-view></div>
+  <div ui-view></div>
 
   <!-- External JS-->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-
+  <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular/angular-cookie.min.js"></script>
   <!-- Application JS-->
   <script src="app.js"></script>
   <script src="app-modules/login/login.js"></script>
   <script src="app-modules/register/register.js"></script>
+  <script src="app-modules/home/home.js"></script>
+
+  <script src="app-modules/home/home-modules/admin/admin.js"></script>
+  <script src="app-modules/home/home-modules/users/users.js"></script>
 
 </body>
 </html>

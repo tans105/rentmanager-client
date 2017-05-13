@@ -1,22 +1,14 @@
 'use strict';
 
-angular.module('myApp.register', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/register', {
-    templateUrl: 'app-modules/register/register.html',
-    controller: 'RegisterCtrl'
-  });
-}])
-
-.controller('RegisterCtrl', function($scope,$location,registerService) {
+appModule.controller('RegisterCtrl', function($scope,$state,registerService) {
   console.log("register controller reporting on duty");
   $scope.hasError=false;
   var registerSuccess=function(response){
     if(angular.isDefined(response)){
       console.log(response);
       if(response.data.success){
-        $location.path('#/login');
+        $state.go('login');
       }
       else{
         alert(response.data.message);
@@ -45,9 +37,9 @@ angular.module('myApp.register', ['ngRoute'])
     }
   }
 
-})
+});
 
-.service('registerService',function($http){
+appModule.service('registerService',function($http){
   this.registerUser = function(email, pwd, callback){
     $http({
       url: "http://localhost:3000/register",
