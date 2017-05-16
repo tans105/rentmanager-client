@@ -4,6 +4,7 @@
             <div class="col-xs-12">
                 <div class="form-wrap">
                     <h1>Log in</h1>
+                    <div class="alert alert-danger" ng-show="hasError">{{errorMsg}}</div>
                     <form ng-submit="login(user)" role="form" action="javascript:;" method="post" id="login-form"
                           autocomplete="off">
                         <div class="form-group">

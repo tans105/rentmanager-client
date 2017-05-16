@@ -7,6 +7,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
         email: 'tanmayawasthi105@gmail.com',
         password: 'password'
     }
+    $scope.hasError=false;
     var loginSuccess = function (data) {
         console.log(data);
         if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
@@ -19,7 +20,8 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
                 $state.go('home');
             }
             else {
-                alert("Login failed");
+                $scope.hasError=true;
+                $scope.errorMsg=data.data.responseMsg;
                 $state.go('login');
             }
         }
