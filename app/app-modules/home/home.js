@@ -14,4 +14,6 @@
             $cookies.remove('isLoggedIn');
             $state.go('login');
         }
+
+        $scope.active="admin";
     });

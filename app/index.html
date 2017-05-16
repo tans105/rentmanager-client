@@ -1,55 +1,64 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>||RENT MANAGER||</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>||RENT MANAGER||</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- External CSS-->
-  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- External CSS-->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
-  <!-- Application CSS-->
-  <link rel="stylesheet" href="app.css">
-  <link rel="stylesheet" href="app-modules/login/login.css">
-  <link rel="stylesheet" href="app-modules/register/register.css">
+    <!-- Application CSS-->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="app-modules/login/login.css">
+    <link rel="stylesheet" href="app-modules/register/register.css">
+    <link rel="stylesheet" href="app-modules/home/home.css">
 
 
 </head>
 <body>
-  <!--<ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>-->
+<!--<ul class="menu">
+  <li><a href="#/view1">view1</a></li>
+  <li><a href="#/view2">view2</a></li>
+</ul>-->
 
-  <!--<div style="background-color: #1fa67b" class="jumbotron">
-    <h2 style="color: white;">RENT MANAGER</h2>
-  </div>-->
+<!--<div style="background-color: #1fa67b" class="jumbotron">
+  <h2 style="color: white;">RENT MANAGER</h2>
+</div>-->
 
-  <div ui-view></div>
+<div class="page-header" style="margin: 0px;">
+    <h1 style="color: #1fa67b">Rental Manager</h1>
+</div>
 
-  <!-- External JS-->
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="bower_components/angular/angular-cookie.min.js"></script>
-  <!-- Application JS-->
-  <script src="app.js"></script>
-  <script src="app-modules/login/login.js"></script>
-  <script src="app-modules/register/register.js"></script>
-  <script src="app-modules/home/home.js"></script>
+<div ui-view></div>
 
-  <script src="app-modules/home/home-modules/admin/admin.js"></script>
-  <script src="app-modules/home/home-modules/users/users.js"></script>
+<!-- External JS-->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular/angular-cookie.min.js"></script>
+<!-- Application JS-->
+<script src="app.js"></script>
+<script src="app-modules/login/login.js"></script>
+<script src="app-modules/register/register.js"></script>
+<script src="app-modules/home/home.js"></script>
+
+<script src="app-modules/home/home-modules/admin/admin.js"></script>
+<script src="app-modules/home/home-modules/users/users.js"></script>
 
 </body>
 </html>
