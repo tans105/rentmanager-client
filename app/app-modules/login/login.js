@@ -8,6 +8,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
         password: 'password'
     }
     $scope.hasError = false;
+    $scope.clearLoginStatus();
     var loginSuccess = function (data) {
         console.log(data);
         if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
@@ -18,7 +19,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
                 var cookieData = {
                     "isLoggedIn": true,
                     "token": data.data.token,
-                    "loggedInUser": "tanmay",
+                    "loggedInUser": "Tanmay",
                     "role": "Admin"
                 };
                 $cookies.putObject("cookieData", cookieData, {'expires': expiresValue});
@@ -32,18 +33,9 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
             }
         }
     };
-
     $scope.login = function (user) {
         loginService.loginValidation(user.email, user.password, loginSuccess)
     }
-    $scope.inputType = "password";
-    $scope.hideShowPassword = function () {
-        if ($scope.inputType == 'password')
-            $scope.inputType = 'text';
-        else
-            $scope.inputType = 'password';
-    };
-
 });
 
 appModule.service('loginService', function ($http) {

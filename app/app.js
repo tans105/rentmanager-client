@@ -50,7 +50,7 @@ appModule.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 });
 
-appModule.controller('myAppCtrl', function ($scope) {
+appModule.controller('myAppCtrl', function ($scope,$cookies,$state) {
     console.log("App controller reporting on duty");
     $scope.isLoggedIn = false;
     $scope.role = '';
@@ -67,7 +67,24 @@ appModule.controller('myAppCtrl', function ($scope) {
         $scope.role = '';
         $scope.loggedInUser = '';
     }
-})
+
+
+    $scope.logout = function () {
+        $cookies.remove('isLoggedIn');
+        $scope.clearLoginStatus();
+        $state.go('login');
+
+    }
+
+    $scope.changeColor = function(bool) {
+        if(bool === true) {
+            $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': 'black'};
+        } else if (bool === false) {
+            $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': '#1fa67b'};
+        }
+    };
+});
+
 
 
 

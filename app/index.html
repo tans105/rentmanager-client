@@ -16,6 +16,7 @@
 
     <!-- External CSS-->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 
     <!-- Application CSS-->
@@ -30,12 +31,27 @@
 
 <div class="page-header" style="margin: 0px; padding-bottom: 0px;">
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><h1 style="color: #1fa67b ; margin-top: 0px; margin-bottom: 0px;">Rental Manager</h1></div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><h5 style="float: right;" ng-show="isLoggedIn" ng-cloak>Welcome {{loggedInUser}}</h5> </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><h1
+                style="color: #1fa67b ; margin-top: 0px; margin-bottom: 0px;">Rental Manager</h1>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-show="isLoggedIn">
+            <div class="row">
+                <div class="col-lg-10">
+                    <h6 style="float: right; font-weight: bolder;" ng-cloak>Welcome : {{loggedInUser}}({{role}})</h6>
+                </div>
+                <div class="col-lg-2">
+                    <a ng-click="logout()"> <i style="font-size: x-large; margin-top: 4px; color: #1fa67b"
+                                               class="fa fa-power-off"  ng-style="hoverColour" aria-hidden="true"
+                                               ng-mouseenter="changeColor(true)"
+                                               ng-mouseleave="changeColor(false)">
+
+                    </i> </a>
+                </div>
+            </div>
+        </div>
     </div>
-
-
 </div>
+
 
 <div ui-view></div>
 
@@ -43,7 +59,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+<!--<script src="bower_components/angular-route/angular-ror/e.js"></script>-->
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular/angular-cookie.min.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
