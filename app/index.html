@@ -26,10 +26,15 @@
 
 
 </head>
-<body>
+<body ng-controller="myAppCtrl">
 
-<div class="page-header" style="margin: 0px;">
-    <h1 style="color: #1fa67b ; margin-top: 0px; margin-bottom: 0px;">Rental Manager</h1>
+<div class="page-header" style="margin: 0px; padding-bottom: 0px;">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><h1 style="color: #1fa67b ; margin-top: 0px; margin-bottom: 0px;">Rental Manager</h1></div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><h5 style="float: right;" ng-show="isLoggedIn" ng-cloak>Welcome {{loggedInUser}}</h5> </div>
+    </div>
+
+
 </div>
 
 <div ui-view></div>
@@ -41,6 +46,7 @@
 <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular/angular-cookie.min.js"></script>
+<script src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
 <!-- Application JS-->
 <script src="app.js"></script>
 <script src="app-modules/login/login.js"></script>

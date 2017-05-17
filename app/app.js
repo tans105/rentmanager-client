@@ -2,7 +2,8 @@
 
 var appModule = angular.module('myApp', [
     'ui.router',
-    'ngCookies'
+    'ngCookies',
+    'angular-jwt'
 ]);
 
 appModule.config(function ($stateProvider, $urlRouterProvider) {
@@ -44,10 +45,29 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
 
 });
 
-appModule.config(function($httpProvider){
+appModule.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=UTF-8';
-    $httpProvider.defaults.headers.post['X-Requested-With']='XMLHttpRequest';
+    $httpProvider.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 });
+
+appModule.controller('myAppCtrl', function ($scope) {
+    console.log("App controller reporting on duty");
+    $scope.isLoggedIn = false;
+    $scope.role = '';
+    $scope.loggedInUser = '';
+
+    $scope.changeLoginStatus = function (val) {
+        $scope.isLoggedIn = val.isLoggedIn;
+        $scope.role = val.role;
+        $scope.loggedInUser = val.loggedInUser;
+
+    }
+    $scope.clearLoginStatus = function () {
+        $scope.isLoggedIn = false;
+        $scope.role = '';
+        $scope.loggedInUser = '';
+    }
+})
 
 
 

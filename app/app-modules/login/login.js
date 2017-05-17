@@ -1,27 +1,33 @@
 'use strict';
 
 
-appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cookies) {
+appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cookies, jwtHelper, $rootScope) {
     console.log("Login controller reporting on duty");
     $scope.user = {
         email: 'tanmayawasthi105@gmail.com',
         password: 'password'
     }
-    $scope.hasError=false;
+    $scope.hasError = false;
     var loginSuccess = function (data) {
         console.log(data);
         if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
             if (data.data.success) {
-                console.log("Successful Login");
                 var today = new Date();
                 var expiresValue = new Date(today);
                 expiresValue.setMinutes(today.getMinutes() + 10);
-                $cookies.putObject("isLoggedIn", true, {'expires': expiresValue});
+                var cookieData = {
+                    "isLoggedIn": true,
+                    "token": data.data.token,
+                    "loggedInUser": "tanmay",
+                    "role": "Admin"
+                };
+                $cookies.putObject("cookieData", cookieData, {'expires': expiresValue});
                 $state.go('home');
+
             }
             else {
-                $scope.hasError=true;
-                $scope.errorMsg=data.data.responseMsg;
+                $scope.hasError = true;
+                $scope.errorMsg = data.data.responseMsg;
                 $state.go('login');
             }
         }
@@ -44,7 +50,7 @@ appModule.service('loginService', function ($http) {
 
     this.loginValidation = function (email, pwd, callback) {
         $http({
-            url: "http://localhost:8080/user/login",
+            url: "http://localhost:8080/user/authenticate   ",
             method: "POST",
             data: {'email': email, 'password': pwd}
         })
