@@ -27,7 +27,7 @@
 
 
 </head>
-<body ng-controller="myAppCtrl">
+<body ng-cloak ng-controller="myAppCtrl">
 
 <div class="page-header" style="margin: 0px; padding-bottom: 0px;">
     <div class="row">
@@ -37,7 +37,7 @@
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-show="isLoggedIn">
             <div class="row">
                 <div class="col-lg-10">
-                    <h6 style="float: right; font-weight: bolder;" ng-cloak>Welcome : {{loggedInUser}}({{role}})</h6>
+                    <h6 style="float: right; font-weight: bolder;">Welcome : {{loggedInUser}}({{role}})</h6>
                 </div>
                 <div class="col-lg-2">
                     <a ng-click="logout()"> <i style="font-size: x-large; margin-top: 4px; color: #1fa67b"

@@ -2,14 +2,20 @@
 
 
 appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies) {
-    var isLoggedIn = $cookies.getObject('cookieData');
-    console.log(isLoggedIn);
-    $scope.changeLoginStatus(isLoggedIn);
-    if (angular.isUndefined(isLoggedIn) || isLoggedIn == null || !isLoggedIn) {
+    var cookieData = $cookies.getObject('cookieData');
+
+    if (angular.isUndefined(cookieData) || cookieData == null || !cookieData) {
+        $scope.clearLoginStatus();
         $state.go('login');
-    } else {
-        $state.go('home.admin');
     }
+    $scope.selectedModule=cookieData.moduleList[0];
+    $scope.changeLoginStatus(cookieData);
+    $scope.moduleList = cookieData.moduleList;
+
+    $scope.activateModule=function(module){
+        $scope.selectedModule=module;
+    };
+    $state.go('home.admin');
 
 
 });

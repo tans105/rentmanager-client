@@ -19,7 +19,8 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
                 var cookieData = {
                     "isLoggedIn": true,
                     "token": data.data.token,
-                    "loggedInUser": "Tanmay",
+                    "moduleList":data.data.moduleList,
+                    "loggedInUser": "Tanmay",//read them from token
                     "role": "Admin"
                 };
                 $cookies.putObject("cookieData", cookieData, {'expires': expiresValue});
