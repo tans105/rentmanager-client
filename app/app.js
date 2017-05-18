@@ -70,7 +70,7 @@ appModule.controller('myAppCtrl', function ($scope,$cookies,$state) {
 
 
     $scope.logout = function () {
-        $cookies.remove('isLoggedIn');
+        $cookies.remove('cookieData');
         $scope.clearLoginStatus();
         $state.go('login');
 

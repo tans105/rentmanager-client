@@ -1,21 +1,12 @@
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
         <ul class="nav nav-pills nav-stacked">
-            <li ng-repeat="module in moduleList" ng-class="{active : module==selectedModule}" ><a role="presentation" ui-sref="home.{{module}}">{{module}}</a></li>
-            <!--<li><a role="presentation" class="active" ui-sref="home.admin">User Management</a></li>-->
-            <!--<li><a role="presentation" ui-sref="home.users">User</a></li>-->
-            <!--<li><a role="presentation"> Module 1 </a></li>-->
-            <!--<li><a role="presentation"> Module 2 </a></li>-->
-            <!--<li><a role="presentation"> Module 3 </a></li>-->
-            <!--<li><a role="presentation"> Module 4 </a></li>-->
-            <!--<li><a role="presentation"> Module 5 </a></li>-->
-            <!--<li><a role="presentation"> Module 6 </a></li>-->
-            <!--<li><a ng-click="logout()"> Logout </a></li>-->
-
+            <li ng-repeat="module in moduleList" ng-class="{active : module.moduleLink==selectedModule}"><a
+                    role="presentation"
+                    ui-sref="home.{{module.moduleLink}}">{{module.moduleName}}</a>
+            </li>
         </ul>
-
     </div>
-
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
         <div ui-view></div>
     </div>
