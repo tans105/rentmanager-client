@@ -8,5 +8,6 @@ appModule.controller('404Ctrl', function ($scope, $state, loginService, $cookies
     if (cookieData) {
         console.log("404 controller");
         $scope.message = "No Such Page";
+        $scope.activateModule();
     }
 });
