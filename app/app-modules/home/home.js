@@ -3,13 +3,7 @@
 
 appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies) {
     var cookieData = $cookies.getObject('cookieData');
-
-    if (angular.isUndefined(cookieData) || cookieData == null || !cookieData) {
-        console.log("OOPS! no cookie");
-        $scope.clearLoginStatus();
-        $state.go('login');
-    }
-    else {
+    if (cookieData) {
         $scope.selectedModule = cookieData.moduleList[0].moduleName;
         $scope.changeLoginStatus(cookieData);
         $scope.moduleList = cookieData.moduleList;

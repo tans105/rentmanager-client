@@ -34,14 +34,14 @@
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><h1
                 style="color: #1fa67b ; margin-top: 0px; margin-bottom: 0px;">Rental Manager</h1>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-show="isLoggedIn">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-if="isLoggedIn">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <h6 style="float: right; font-weight: bolder;">Welcome : {{loggedInUser}}({{role}})</h6>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <a ng-click="logout()"> <i style="font-size: x-large; margin-top: 4px; color: #1fa67b"
-                                               class="fa fa-power-off"  ng-style="hoverColour" aria-hidden="true"
+                                               class="fa fa-power-off" ng-style="hoverColour" aria-hidden="true"
                                                ng-mouseenter="changeColor(true)"
                                                ng-mouseleave="changeColor(false)">
 
@@ -63,14 +63,16 @@
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular/angular-cookie.min.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
+
 <!-- Application JS-->
 <script src="app.js"></script>
+<script src="app-controller.js"></script>
 <script src="app-modules/login/login.js"></script>
 <script src="app-modules/register/register.js"></script>
 <script src="app-modules/home/home.js"></script>
-
 <script src="app-modules/home/home-modules/admin/admin.js"></script>
 <script src="app-modules/home/home-modules/users/users.js"></script>
+<script src="app-modules/home/home-modules/404/404.js"></script>
 
 </body>
 </html>

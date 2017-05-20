@@ -27,6 +27,12 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'HomeCtrl'
         })
         .state({
+            name: 'home.404',
+            url: '/404',
+            templateUrl: 'app-modules/home/home-modules/404/404.html',
+            controller: '404Ctrl'
+        })
+        .state({
             name: 'home.admin',
             url: '/admin',
             parent: 'home',
@@ -39,51 +45,18 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             parent: 'home',
             templateUrl: 'app-modules/home/home-modules/users/users.html',
             controller: 'UserCtrl'
-        })
-    // .state("otherwise", 'login')
-    $urlRouterProvider.otherwise('/login');
+        });
+    $urlRouterProvider.otherwise('/home/404');
 
 });
+
 
 appModule.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=UTF-8';
     $httpProvider.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 });
 
-appModule.controller('myAppCtrl', function ($scope,$cookies,$state) {
-    console.log("App controller reporting on duty");
-    $scope.isLoggedIn = false;
-    $scope.role = '';
-    $scope.loggedInUser = '';
 
-    $scope.changeLoginStatus = function (val) {
-        $scope.isLoggedIn = val.isLoggedIn;
-        $scope.role = val.role;
-        $scope.loggedInUser = val.loggedInUser;
-
-    }
-    $scope.clearLoginStatus = function () {
-        $scope.isLoggedIn = false;
-        $scope.role = '';
-        $scope.loggedInUser = '';
-    }
-
-
-    $scope.logout = function () {
-        $cookies.remove('cookieData');
-        $scope.clearLoginStatus();
-        $state.go('login');
-
-    }
-
-    $scope.changeColor = function(bool) {
-        if(bool === true) {
-            $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': 'black'};
-        } else if (bool === false) {
-            $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': '#1fa67b'};
-        }
-    };
-});
 
 
 
