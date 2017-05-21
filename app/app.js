@@ -33,18 +33,39 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             controller: '404Ctrl'
         })
         .state({
-            name: 'home.admin',
-            url: '/admin',
+            name: 'home.profileManagement',
+            url: '/profileManagement',
             parent: 'home',
-            templateUrl: 'app-modules/home/home-modules/admin/admin.html',
-            controller: 'AdminCtrl'
+            templateUrl: 'app-modules/home/home-modules/profileManagement/profileManagement.html',
+            controller: 'ProfileManagementCtrl'
         })
         .state({
-            name: 'home.users',
-            url: '/users',
+            name: 'home.userManagement',
+            url: '/userManagement',
             parent: 'home',
-            templateUrl: 'app-modules/home/home-modules/users/users.html',
-            controller: 'UserCtrl'
+            templateUrl: 'app-modules/home/home-modules/userManagement/userManagement.html',
+            controller: 'UserManagementCtrl'
+        })
+        .state({
+            name: 'home.roomAllotment',
+            url: '/roomAllotment',
+            parent: 'home',
+            templateUrl: 'app-modules/home/home-modules/roomAllotment/roomAllotment.html',
+            controller: 'RoomAllotmentCtrl'
+        })
+        .state({
+            name: 'home.approveRent',
+            url: '/approveRent',
+            parent: 'home',
+            templateUrl: 'app-modules/home/home-modules/approveRent/approveRent.html',
+            controller: 'ApproveRentCtrl'
+        })
+        .state({
+            name: 'home.roomManagement',
+            url: '/roomManagement',
+            parent: 'home',
+            templateUrl: 'app-modules/home/home-modules/roomManagement/roomManagement.html',
+            controller: 'RoomManagementCtrl'
         });
     $urlRouterProvider.otherwise('/home/404');
 

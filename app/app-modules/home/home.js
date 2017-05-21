@@ -11,7 +11,7 @@ appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookie
         $scope.activateModule = function (moduleName) {
             $scope.selectedModule = moduleName;
         };
-        $state.go('home.admin');
+        $state.go('home.profileManagement');
     }
 
 });
