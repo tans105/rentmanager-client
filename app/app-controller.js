@@ -6,7 +6,7 @@
 appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope) {
 
     console.log("App controller reporting on duty");
-
+    $rootScope.loading=false;
     $rootScope.$on('$stateChangeSuccess',
         function (event, toState, toParams, fromState, fromParams) {
             var cookieData = $cookies.getObject('cookieData');

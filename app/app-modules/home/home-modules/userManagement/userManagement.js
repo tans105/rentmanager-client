@@ -28,11 +28,11 @@ appModule.controller('UserManagementCtrl', function ($scope, $state, loginServic
             $scope.userId='';
             $scope.role='';
         };
-        $scope.removeRow = function(name){
+        $scope.removeRow = function(userId){
             var index = -1;
             var comArr = eval( $scope.users );
             for( var i = 0; i < comArr.length; i++ ) {
-                if( comArr[i].name === name ) {
+                if( comArr[i].userId === userId ) {
                     index = i;
                     break;
                 }

@@ -7,26 +7,28 @@
                     <div class="alert alert-danger" ng-show="hasError">{{errorMsg}}</div>
                     <form ng-submit="login(user)" role="form" action="javascript:;" method="post" id="login-form"
                           autocomplete="off">
-                        <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" ng-model="user.email"
-                                   placeholder="somebody@example.com">
+
+                        <div class="input-group margin-bottom-sm">
+                            <span class="input-group-addon" style="background: #1fa67b;"><i
+                                    class="fa fa-envelope-o fa-fw"
+                                    aria-hidden="true"></i></span>
+                            <input class="form-control" ng-model="user.email" type="text" placeholder="Email address">
                         </div>
-                        <div class="form-group">
-                            <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" ng-model="user.password"
-                                   placeholder="Password">
+                        <div class="input-group" style="margin-top: 15px;">
+                            <span class="input-group-addon" style="background: #1fa67b;"><i class="fa fa-key fa-fw"
+                                                                                            aria-hidden="true"></i></span>
+                            <input class="form-control" ng-model="user.password" type="password" placeholder="Password">
                         </div>
-<!--
-                        <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" />
-                        <label class="show-hide-checkbox" for="checkbox" ng-if="passwordCheckbox">Hide password</label>
-                        <label class="show-hide-checkbox" for="checkbox" ng-if="!passwordCheckbox">Show password</label>
--->
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block"
+                               style="margin-top: 15px;" value="Log in">
                     </form>
+
                     <div class="row">
-                        <div class="col-lg-6 col-md-5 col-sm-1"><a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a></div>
-                        <div class="col-lg-6 col-md-5 col-sm-1 register-link"><a href="#/register">Register</a></div>
+                        <div class="col-lg-6 col-md-5 col-sm-1"><a href="javascript:;" class="forget"
+                                                                   data-toggle="modal" data-target=".forget-modal">Forgot
+                            your password?</a></div>
+
                     </div>
 
 

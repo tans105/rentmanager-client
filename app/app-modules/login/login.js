@@ -10,6 +10,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
     $scope.hasError = false;
     $scope.clearLoginStatus();
     var loginSuccess = function (data) {
+        $rootScope.loading = false;
         console.log(data);
         if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
             if (data.data.success) {
@@ -35,6 +36,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
         }
     };
     $scope.login = function (user) {
+        $rootScope.loading = true;
         loginService.loginValidation(user.email, user.password, loginSuccess)
     }
 });
