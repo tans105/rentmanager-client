@@ -1,3 +1,36 @@
-<div>
-    {{message}}
+<h3>User Management</h3>
+<hr>
+<div class="row" style="padding-bottom: 10px; padding-top: 10px;">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <input type="text" class="form-control ng-pristine ng-valid" PLACEHOLDER="Search For User" ng-model="searchKeyword">
+    </div>
 </div>
+
+
+<table class="table">
+    <tr>
+        <th>User Name
+        </th>
+        <th>User Id
+        </th>
+        <th>Role
+        </th>
+        <th>Action
+        </th>
+    </tr>
+    <tr ng-repeat="user in users  | filter: searchKeyword ">
+        <td>{{user.userName}}
+        </td>
+        <td>
+            {{user.userId}}
+        </td>
+        <td>
+            {{user.role}}
+        </td>
+        <td>
+            <input type="button" value="View" class="btn btn-success" ng-click="removeRow(user.name)"/>
+            <input type="button" value="Edit" class="btn btn-primary" ng-click="removeRow(user.name)"/>
+            <input type="button" value="Remove" class="btn btn-danger" ng-click="removeRow(us.ername)"/>
+        </td>
+    </tr>
+</table>
