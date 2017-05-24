@@ -6,8 +6,13 @@ var appModule = angular.module('myApp', [
     'angular-jwt',
     'ngAnimate',
     'ngSanitize',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'cfp.loadingBar'
 ]);
+
+appModule.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
+    }]);
 
 appModule.config(function ($stateProvider, $urlRouterProvider) {
 

@@ -17,11 +17,12 @@
     <!-- External CSS-->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
 
 
     <!-- Application CSS-->
     <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="stylesheets/loader.css">
     <link rel="stylesheet" href="app-modules/login/login.css">
     <link rel="stylesheet" href="app-modules/register/register.css">
     <link rel="stylesheet" href="app-modules/home/home.css">
@@ -52,9 +53,11 @@
     </div>
 </div>
 
-<div class="loader" ng-show="loading">
-    <i class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
-</div>
+<!--<div>-->
+<!--<uib-progressbar animate="false" value="dynamic" type="primary"-->
+<!--style="background-color:#1fa67b; height: 3px;"></uib-progressbar>-->
+<!--</div>-->
+
 <div ui-view></div>
 
 <!-- External JS-->
@@ -67,15 +70,18 @@
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-
+<script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
 
 <!-- Application JS-->
 <script src="app.js"></script>
 <script src="app-controller.js"></script>
+<script src="app-service.js"></script>
 <script src="app-modules/login/login.js"></script>
+<script src="app-modules/login/login-service.js"></script>
 <script src="app-modules/register/register.js"></script>
-<script src="app-modules/home/home.js"></script>
+
 <!--Home Modules-->
+<script src="app-modules/home/home.js"></script>
 <script src="app-modules/home/home-modules/profileManagement/profileManagement.js"></script>
 <script src="app-modules/home/home-modules/userManagement/userManagement.js"></script>
 <script src="app-modules/home/home-modules/roomAllotment/roomAllotment.js"></script>

@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cookies, jwtHelper, $rootScope) {
+appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cookies, jwtHelper, $rootScope, loaderService, cfpLoadingBar) {
     console.log("Login controller reporting on duty");
     $scope.user = {
         email: 'tanmayawasthi105@gmail.com',
@@ -10,7 +10,8 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
     $scope.hasError = false;
     $scope.clearLoginStatus();
     var loginSuccess = function (data) {
-        $rootScope.loading = false;
+        // loaderService.generateEvent("show-loader", false);
+        cfpLoadingBar.complete();
         console.log(data);
         if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
             if (data.data.success) {
@@ -20,7 +21,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
                 var cookieData = {
                     "isLoggedIn": true,
                     "token": data.data.token,
-                    "moduleList":data.data.moduleList,
+                    "moduleList": data.data.moduleList,
                     "loggedInUser": "Tanmay",//read them from token
                     "role": "Admin"
                 };
@@ -36,26 +37,9 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
         }
     };
     $scope.login = function (user) {
-        $rootScope.loading = true;
+        // loaderService.generateEvent("show-loader", true);
+        cfpLoadingBar.start();
         loginService.loginValidation(user.email, user.password, loginSuccess)
     }
 });
 
-appModule.service('loginService', function ($http) {
-
-    this.loginValidation = function (email, pwd, callback) {
-        $http({
-            url: "http://localhost:8080/user/authenticate   ",
-            method: "POST",
-            data: {'email': email, 'password': pwd}
-        })
-            .then(function (response) {
-                    callback(response);
-                },
-                function (response) {
-                    callback();
-                });
-
-    };
-
-});

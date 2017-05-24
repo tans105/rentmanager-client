@@ -3,10 +3,10 @@
  */
 'use strict';
 
-appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope) {
+appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope, $interval) {
 
     console.log("App controller reporting on duty");
-    $rootScope.loading=false;
+    $rootScope.loading = false;
     $rootScope.$on('$stateChangeSuccess',
         function (event, toState, toParams, fromState, fromParams) {
             var cookieData = $cookies.getObject('cookieData');
@@ -49,6 +49,21 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
             $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': '#1fa67b'};
         }
     };
+    $rootScope.loader = function () {
+        $scope.dynamic = 0;
+        var progress = $interval(function () {
+            $scope.dynamic += 1;
+            if ($scope.dynamic == 100) {
+                $interval.cancel(progress);
+            }
+        }, 50);
+
+    }
+
+    $scope.$on('show-loader', function(event, data){
+        $scope.visibleLoader=data;
+    })
 
 
 });
+

@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies) {
+appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies, loaderService) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.selectedModule = cookieData.moduleList[0].moduleName;
@@ -12,6 +12,7 @@ appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookie
             $scope.selectedModule = moduleName;
         };
         $state.go('home.profileManagement');
+
     }
 
 });
