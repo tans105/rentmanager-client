@@ -3,7 +3,10 @@
 var appModule = angular.module('myApp', [
     'ui.router',
     'ngCookies',
-    'angular-jwt'
+    'angular-jwt',
+    'ngAnimate',
+    'ngSanitize',
+    'ui.bootstrap'
 ]);
 
 appModule.config(function ($stateProvider, $urlRouterProvider) {
