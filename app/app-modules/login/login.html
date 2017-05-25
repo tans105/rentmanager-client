@@ -3,19 +3,19 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-wrap">
-                    <h1>Log in</h1>
+                    <h1 style="color: white">Log in</h1>
                     <div class="alert alert-danger" ng-show="hasError">{{errorMsg}}</div>
                     <form ng-submit="login(user)" role="form" action="javascript:;" method="post" id="login-form"
                           autocomplete="off">
 
                         <div class="input-group margin-bottom-sm">
-                            <span class="input-group-addon" style="background: #1fa67b;"><i
-                                    class="fa fa-envelope-o fa-fw"
+                            <span class="input-group-addon"><i
+                                    class="fa fa-user fa-fw"
                                     aria-hidden="true"></i></span>
-                            <input class="form-control" ng-model="user.email" type="text" placeholder="Email address">
+                            <input class="form-control" ng-model="user.userId" type="text" placeholder="Hostel User ID">
                         </div>
                         <div class="input-group" style="margin-top: 15px;">
-                            <span class="input-group-addon" style="background: #1fa67b;"><i class="fa fa-key fa-fw"
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"
                                                                                             aria-hidden="true"></i></span>
                             <input class="form-control" ng-model="user.password" type="password" placeholder="Password">
                         </div>

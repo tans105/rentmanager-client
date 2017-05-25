@@ -28,37 +28,11 @@
     <link rel="stylesheet" href="app-modules/home/home.css">
 
 </head>
-<body ng-cloak ng-controller="myAppCtrl">
+<body ng-cloak ng-controller="myAppCtrl" ng-class="{'image-background': !isLoggedIn}">
 
-<div class="page-header" style="margin: 0px; padding-bottom: 0px;">
-    <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"><h1
-                style="color: #1fa67b ; margin-top: 0px; margin-bottom: 0px;">Rental Manager</h1>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-if="isLoggedIn">
-            <div class="row">
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <h6 style="float: right; font-weight: bolder;">Welcome : {{loggedInUser}}({{role}})</h6>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a ng-click="logout()"> <i style="font-size: x-large; margin-top: 4px; color: #1fa67b"
-                                               class="fa fa-power-off" ng-style="hoverColour" aria-hidden="true"
-                                               ng-mouseenter="changeColor(true)"
-                                               ng-mouseleave="changeColor(false)">
-
-                    </i> </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--<div>-->
-<!--<uib-progressbar animate="false" value="dynamic" type="primary"-->
-<!--style="background-color:#1fa67b; height: 3px;"></uib-progressbar>-->
-<!--</div>-->
-
+<div ng-include='"templates/header.html"'></div>
 <div ui-view></div>
+<div ng-include="'templates/footer.html'"></div>
 
 <!-- External JS-->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>

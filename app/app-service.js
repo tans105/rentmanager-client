@@ -3,11 +3,11 @@
  */
 'use strict';
 
-appModule.service('loaderService', function($rootScope){
+appModule.service('loaderService', function ($rootScope) {
 
     var that = this;
 
-    that.generateEvent = function(message, data){
+    that.generateEvent = function (message, data) {
         $rootScope.$broadcast(message, data);
     }
 });

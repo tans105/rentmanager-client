@@ -1,8 +1,86 @@
-body {
-  margin: 0 !important;
-  padding: 0 !important;
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #f6f6f6;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
-  display: none !important;
+    display: none !important;
+}
+
+.image-background {
+    background-image: url(images/hostel.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.heading-h1 {
+    color: #fff;
+    margin-top: 0px;
+    padding: 10px 0;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.page-header {
+    margin: 0px;
+    padding-bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+
+.text-right {
+    text-align: right;
+}
+
+footer a,
+#login a {
+    color: #ccc;
+}
+
+footer a:hover,
+#login a:hover {
+    color: #fff;
+}
+
+.logout {
+    font-size: x-large;
+    color: #ccc;
+}
+
+.logout i {
+    padding-top: 12px;
+}
+
+.logout:hover {
+    color: #fff;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    background-color: #00bcd4 !important;
+    color: #fff !important;
+}
+
+.nav-pills > li > a {
+    color: #333;
+}
+
+.nav-pills > li > a:focus, .nav-pills > li > a:hover {
+    color: #000;
+}
+
+.welcome-user {
+    text-align: right;
+    font-weight: bolder;
 }

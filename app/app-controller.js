@@ -21,21 +21,24 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
     $scope.isLoggedIn = false;
     $scope.role = '';
     $scope.loggedInUser = '';
+    $scope.hostelName = '';
 
     $scope.changeLoginStatus = function (val) {
         $scope.isLoggedIn = val.isLoggedIn;
         $scope.role = val.role;
         $scope.loggedInUser = val.loggedInUser;
-
+        $scope.hostelName = val.hostelName;
     }
     $scope.clearLoginStatus = function () {
         $scope.isLoggedIn = false;
         $scope.role = '';
         $scope.loggedInUser = '';
+        $scope.hostelName = '';
     }
 
 
     $scope.logout = function () {
+        // $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': 'black'};
         $cookies.remove('cookieData');
         $scope.clearLoginStatus();
         $state.go('login');
@@ -43,11 +46,11 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
     }
 
     $scope.changeColor = function (bool) {
-        if (bool === true) {
-            $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': 'black'};
-        } else if (bool === false) {
-            $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': '#1fa67b'};
-        }
+        // if (bool === true) {
+        //     $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': '#1fa67b'};
+        // } else if (bool === false) {
+        //     $scope.hoverColour = {'font-size': 'x-large', 'margin-top': '4px', 'color': 'black'};
+        // }
     };
     $rootScope.loader = function () {
         $scope.dynamic = 0;
@@ -60,8 +63,8 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
 
     }
 
-    $scope.$on('show-loader', function(event, data){
-        $scope.visibleLoader=data;
+    $scope.$on('show-loader', function (event, data) {
+        $scope.visibleLoader = data;
     })
 
 

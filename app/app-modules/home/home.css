@@ -29,3 +29,29 @@ li a:hover:not(.active) {
 .verticalLine {
     border-left: thick solid #ff0000;
 }
+
+.right-view,
+.left-menu {
+    margin: 15px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    height: 78vh;
+    box-shadow: 2px 5px 11px #909090;
+}
+
+.left-menu {
+    margin-right: 0;
+    height: 100%;
+}
+
+.right-view {
+    margin-left: 0;
+    overflow: auto;
+}
+
+.menu-title {
+    color: #aaa;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}

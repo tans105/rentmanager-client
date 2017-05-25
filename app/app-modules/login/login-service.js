@@ -5,11 +5,11 @@
 
 appModule.service('loginService', function ($http) {
 
-    this.loginValidation = function (email, pwd, callback) {
+    this.loginValidation = function (userId, pwd, callback) {
         $http({
             url: "http://localhost:8080/user/authenticate   ",
             method: "POST",
-            data: {'email': email, 'password': pwd}
+            data: {'userId': userId, 'password': pwd}
         })
             .then(function (response) {
                     callback(response);

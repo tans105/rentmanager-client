@@ -2,11 +2,13 @@
 	:: Login Section
 	-------------------------------------------------- */
 #login {
-    padding-top: 50px
+    padding-top: 100px
 }
 #login .form-wrap {
-    width: 30%;
+    width: 40%;
     margin: 0 auto;
+    background-color: rgba(0,0,0,0.6);
+    padding: 15px 50px;
 }
 #login h1 {
     color: #1fa67b;
@@ -68,7 +70,7 @@
 }
 .btn-custom {
     color: #fff;
-    background-color: #1fa67b;
+    background-color: #6d4c4f;
 }
 .btn-custom:hover,
 .btn-custom:focus {
@@ -92,4 +94,8 @@
 
 .show-hide-checkbox{
     font-weight: 100;
+}
+#login .input-group-addon{
+    background-color: #6d4c4f;
+    color: #fff;
 }

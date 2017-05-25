@@ -4,14 +4,29 @@
 appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies, loaderService) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
-        $scope.selectedModule = cookieData.moduleList[0].moduleName;
+        var currentLocation = $state.current.name;
+        if(angular.isUndefined(currentLocation)){
+            $scope.selectedModule = cookieData.moduleList[0];
+        }
+
         $scope.changeLoginStatus(cookieData);
         $scope.moduleList = cookieData.moduleList;
 
         $scope.activateModule = function (moduleName) {
-            $scope.selectedModule = moduleName;
+            angular.forEach($scope.moduleList, function(module){
+                if(module.moduleLink == $scope.moduleName){
+                    $scope.selectedModule = module;
+                }
+            });
         };
-        $state.go('home.profileManagement');
+
+        angular.forEach($scope.moduleList, function(module){
+            if(module.moduleLink == currentLocation){
+                console.log(module);
+                $scope.selectedModule = module;
+                $state.go("home." + module.moduleLink);
+            }
+        });
 
     }
 
