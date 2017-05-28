@@ -54,37 +54,3 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
 });
 
 
-appModule.service('personalDetailsService', function ($http) {
-    this.fetchProfile = function (token, callback) {
-        $http({
-            url: "http://localhost:8080/api/profile/fetchProfile",
-            method: "GET",
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        })
-            .then(function (response) {
-                    callback(response);
-                },
-                function (response) {
-                    callback();
-                });
-    }
-
-    this.storeProfile = function (token, personalDetails, callback) {
-        $http({
-            url: "http://localhost:8080/api/profile/saveProfile",
-            method: "POST",
-            data: personalDetails,
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        })
-            .then(function (response) {
-                    callback(response);
-                },
-                function (response) {
-                    callback();
-                });
-    }
-});
