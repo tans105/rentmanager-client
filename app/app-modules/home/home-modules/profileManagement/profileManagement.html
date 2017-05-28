@@ -1,7 +1,7 @@
 <form>
     <div class="form-group" ng-repeat="field in formSchema">
         <label for="{{field.fieldId}}">{{field.fieldName}}</label>
-        <input type="{{field.type}}" class="form-control" id="{{field.fieldId}}" ng-model="$parent[field.fieldId]"
+        <input type="{{field.fieldType}}" class="form-control" id="{{field.fieldId}}" ng-model="$parent[field.fieldId]"
                placeholder="{{field.placeholder}}">
     </div>
 

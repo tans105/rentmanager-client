@@ -20,6 +20,7 @@ appModule.service('personalDetailsService', function ($http) {
                 });
     }
 
+
     this.storeProfile = function (token, personalDetails, callback) {
         $http({
             url: "http://localhost:8080/api/profile/saveProfile",
