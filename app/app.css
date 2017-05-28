@@ -84,3 +84,8 @@ footer a:hover,
     text-align: right;
     font-weight: bolder;
 }
+.welcome-hostel {
+    text-align: right;
+    font-weight: bolder;
+    color : wheat;
+}

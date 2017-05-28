@@ -1,3 +1,9 @@
-<div>
-    {{message}}
-</div>
+<form>
+    <div class="form-group" ng-repeat="field in formSchema">
+        <label for="{{field.fieldId}}">{{field.fieldName}}</label>
+        <input type="{{field.type}}" class="form-control" id="{{field.fieldId}}" ng-model="$parent[field.fieldId]"
+               placeholder="{{field.placeholder}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

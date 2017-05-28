@@ -19,7 +19,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, $cooki
                 console.log(tokenPayload);
                 var today = new Date();
                 var expiresValue = new Date(today);
-                expiresValue.setMinutes(today.getMinutes() + 10);
+                expiresValue.setMinutes(today.getMinutes() + 30);
                 var cookieData = {
                     "isLoggedIn": true,
                     "token": data.data.token,
