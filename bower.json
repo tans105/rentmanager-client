@@ -16,6 +16,11 @@
     "components-font-awesome": "4.7.0",
     "angular-bootstrap": "2.5.0",
     "angular-cookies": "1.5.11",
-    "angular-loading-bar": "^0.9.0"
+    "angular-aria": "1.5.11",
+    "angular-messages": "1.5.11",
+    "angular-material": "^1.1.4",
+    "angular-loading-bar": "^0.9.0",
+    "moment": "^2.18.1",
+    "angular-momentjs": "^0.2.2"
   }
 }

@@ -7,7 +7,9 @@ var appModule = angular.module('myApp', [
     'ngAnimate',
     'ngSanitize',
     'ui.bootstrap',
-    'cfp.loadingBar'
+    'cfp.loadingBar',
+    'ngMaterial',
+    'angular-momentjs'
 ]);
 
 appModule.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
@@ -85,6 +87,11 @@ appModule.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 });
 
+appModule.config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+        return moment(date).format('YYYY-MM-DD');
+    };
+});
 
 
 

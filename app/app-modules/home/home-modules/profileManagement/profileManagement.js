@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies, personalDetailsService, $parse,cfpLoadingBar) {
+appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies, personalDetailsService, $parse, cfpLoadingBar) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.message = "Profile Management";
@@ -11,8 +11,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             cfpLoadingBar.complete();
             console.log(response);
             if (response.data.success) {
-                // console.log(response.data.formSchema);
-                // console.log(response.data.personalDetails);
+
                 $scope.formSchema = response.data.formSchema;
                 $scope.personalDetails = response.data.personalDetails;
 
@@ -28,12 +27,19 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                     }
                 }
             }
+            console.log($scope)
+            $scope.dob=new Date($scope.dob);
+            $scope.dt1=$scope.dob;
+
         }
         var profileStoreSuccess = function (response) {
             cfpLoadingBar.complete();
             console.log(response);
         }
         $scope.storeInfo = function () {
+            console.log($scope.dob);
+            console.log($scope.dt1);
+
             for (var property in $scope.personalDetails) {
                 if ($scope.personalDetails.hasOwnProperty(property)) {
                     if (property == 'userId') {
@@ -44,9 +50,11 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                     }
                 }
             }
+
             cfpLoadingBar.start();
             personalDetailsService.storeProfile(cookieData.token, $scope.personalDetails, profileStoreSuccess);
         }
+
         cfpLoadingBar.start();
         personalDetailsService.fetchProfile(cookieData.token, profileFetchSuccess);
     }

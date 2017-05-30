@@ -1,9 +1,22 @@
-<form>
+<form ng-submit="storeInfo()">
     <div class="form-group" ng-repeat="field in formSchema">
-        <label for="{{field.fieldId}}">{{field.fieldName}}</label>
-        <input type="{{field.fieldType}}" class="form-control" id="{{field.fieldId}}" ng-model="$parent[field.fieldId]"
-               placeholder="{{field.placeholder}}">
+        <div ng-show="field.fieldType!='date'">
+            <label for="{{field.fieldId}}">{{field.fieldName}}</label>
+            <input type="{{field.fieldType}}" class="form-control" id="{{field.fieldId}}"
+                   ng-model="$parent[field.fieldId]"
+                   placeholder="{{field.placeholder}}">
+        </div>
+        <div ng-show="field.fieldType=='date'">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label for="{{field.fieldId}}">{{field.fieldName}}</label>
+                    <md-datepicker ng-model="dt1" ng-change="$parent[field.fieldId] = dt1.toISOString()"
+                                   md-placeholder="{{field.placeholder}}"></md-datepicker>
+
+                </div>
+            </div>
+        </div>
     </div>
 
-    <button type="submit" ng-click="storeInfo()" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
