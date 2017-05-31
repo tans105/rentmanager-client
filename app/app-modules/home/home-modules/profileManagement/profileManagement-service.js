@@ -38,5 +38,16 @@ appModule.service('personalDetailsService', function ($http) {
                 });
     }
 
+    this.fetchStateList = function (callback) {
+        $http({
+            url: "resources/state.json",
+            method: "GET"
+        }).then(function (response) {
+            callback(response);
+        }, function (response) {
+            callback(response);
+        });
+    }
+
 
 });

@@ -7,6 +7,18 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
         $scope.activateModule("profileManagement");
         $scope.roleId = cookieData.roleId;
 
+        var stateFetchSuccess = function (response) {
+            if (angular.isDefined(response)) {
+                $scope.stateList = response.data.stateList;
+            }
+            else {
+                $log.error("Failed to fetch State List");
+            }
+        }
+
+        personalDetailsService.fetchStateList(stateFetchSuccess);
+
+
         var profileFetchSuccess = function (response) {
             cfpLoadingBar.complete();
             $log.warn("<--PROFILE FETCH RESPONSE-->");
@@ -15,7 +27,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
 
                 $scope.formSchema = response.data.formSchema;
                 $scope.personalDetails = response.data.personalDetails;
-
+                console.log($scope.formSchema);
 
                 for (var property in $scope.personalDetails) {
                     if ($scope.personalDetails.hasOwnProperty(property)) {
@@ -40,7 +52,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             $log.info(response);
         }
         $scope.storeInfo = function () {
-
+            console.log($scope.dob);
             for (var property in $scope.personalDetails) {
                 if ($scope.personalDetails.hasOwnProperty(property)) {
                     if (property == 'userId') {
