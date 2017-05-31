@@ -37,4 +37,6 @@ appModule.service('personalDetailsService', function ($http) {
                     callback();
                 });
     }
+
+
 });
