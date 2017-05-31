@@ -27,7 +27,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                     }
                 }
             }
-            console.log($scope)
+
             $scope.dob=new Date($scope.dob);
             $scope.dt1=$scope.dob;
 
@@ -37,8 +37,6 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             console.log(response);
         }
         $scope.storeInfo = function () {
-            console.log($scope.dob);
-            console.log($scope.dt1);
 
             for (var property in $scope.personalDetails) {
                 if ($scope.personalDetails.hasOwnProperty(property)) {

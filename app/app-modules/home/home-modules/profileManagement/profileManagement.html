@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <label for="{{field.fieldId}}">{{field.fieldName}}</label>
-                    <md-datepicker ng-model="dt1" ng-change="$parent[field.fieldId] = dt1.toISOString()"
+                    <md-datepicker ng-model="dt1" ng-change="$parent[field.fieldId] = dt1"
                                    md-placeholder="{{field.placeholder}}"></md-datepicker>
 
                 </div>
