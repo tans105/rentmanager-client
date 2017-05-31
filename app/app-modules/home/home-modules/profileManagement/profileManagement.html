@@ -4,14 +4,15 @@
             <label for="{{field.fieldId}}">{{field.fieldName}}</label>
             <input type="{{field.fieldType}}" class="form-control" id="{{field.fieldId}}"
                    ng-model="$parent[field.fieldId]"
-                   placeholder="{{field.placeholder}}">
+                   placeholder="{{field.placeholder}}" ng-disabled="!field.editBy.includes(roleId) ">
         </div>
         <div ng-show="field.fieldType=='date'">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <label for="{{field.fieldId}}">{{field.fieldName}}</label>
                     <md-datepicker ng-model="dt1" ng-change="$parent[field.fieldId] = dt1"
-                                   md-placeholder="{{field.placeholder}}"></md-datepicker>
+                                   md-placeholder="{{field.placeholder}}"
+                                   ng-disabled="!field.editBy.includes(roleId)"></md-datepicker>
                 </div>
             </div>
         </div>

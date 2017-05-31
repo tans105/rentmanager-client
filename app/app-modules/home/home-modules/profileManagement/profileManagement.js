@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies, personalDetailsService, $parse, cfpLoadingBar,$log) {
+appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies, personalDetailsService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.activateModule("profileManagement");
