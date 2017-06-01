@@ -40,6 +40,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                     }
                 }
             }
+            if($scope.state==null)
             $scope.state=statePlaceholder;
             //Casting String date to Date Object for datepicker//
             $scope.dob = new Date($scope.dob);
