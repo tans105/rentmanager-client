@@ -56,7 +56,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             $log.info(response);
         }
         $scope.storeInfo = function () {
-            if($scope.state=statePlaceholder){
+            if($scope.state==statePlaceholder){
                 $scope.state=null;
             }
             for (var property in $scope.personalDetails) {
