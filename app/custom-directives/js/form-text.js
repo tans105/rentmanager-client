@@ -5,7 +5,7 @@ appModule.directive('formText', function () {
     return {
         restrict: 'E',
         scope: {
-            field: '=',
+            stack: '=',
             roleId: '=',
             model:'='
         },

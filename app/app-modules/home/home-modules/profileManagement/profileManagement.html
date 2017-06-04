@@ -4,7 +4,7 @@
         <div ng-show="field.size==1">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <form-text field="field" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
+                    <form-text stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
                 </div>
             </div>
         </div>
@@ -34,11 +34,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType!='date' && field.stack[0].fieldType!='select' ">
-                    <label for="{{field.stack[0].fieldId}}">{{field.stack[0].fieldName}}</label>
-                    <input type="{{field.stack[0].fieldType}}" class="form-control" id="{{field.stack[0].fieldId}}"
-                           ng-model="$parent[field.stack[0].fieldId]"
-                           placeholder="{{field.stack[0].placeholder}}"
-                           ng-disabled="!field.stack[0].editBy.includes(roleId) ">
+                    <form-text stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
                 </div>
                 <!--Second column-->
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
@@ -61,11 +57,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType!='date' && field.stack[1].fieldType!='select' ">
-                    <label for="{{field.stack[1].fieldId}}">{{field.stack[1].fieldName}}</label>
-                    <input type="{{field.stack[1].fieldType}}" class="form-control" id="{{field.stack[1].fieldId}}"
-                           ng-model="$parent[field.stack[1].fieldId]"
-                           placeholder="{{field.stack[1].placeholder}}"
-                           ng-disabled="!field.stack[1].editBy.includes(roleId) ">
+                    <form-text stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"></form-text>
                 </div>
             </div>
         </div>
@@ -97,11 +89,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType!='date' && field.stack[0].fieldType!='select' ">
-                    <label for="{{field.stack[0].fieldId}}">{{field.stack[0].fieldName}}</label>
-                    <input type="{{field.stack[0].fieldType}}" class="form-control" id="{{field.stack[0].fieldId}}"
-                           ng-model="$parent[field.stack[0].fieldId]"
-                           placeholder="{{field.stack[0].placeholder}}"
-                           ng-disabled="!field.stack[0].editBy.includes(roleId) ">
+                    <form-text stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
                 </div>
                 <!--Second column-->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
@@ -124,11 +112,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType!='date' && field.stack[1].fieldType!='select' ">
-                    <label for="{{field.stack[1].fieldId}}">{{field.stack[1].fieldName}}</label>
-                    <input type="{{field.stack[1].fieldType}}" class="form-control" id="{{field.stack[1].fieldId}}"
-                           ng-model="$parent[field.stack[1].fieldId]"
-                           placeholder="{{field.stack[1].placeholder}}"
-                           ng-disabled="!field.stack[1].editBy.includes(roleId) ">
+                    <form-text stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"></form-text>
                 </div>
                 <!--Third column of row will choose between text/date/select-->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
@@ -150,11 +134,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[2].fieldType!='date' && field.stack[2].fieldType!='select' ">
-                    <label for="{{field.stack[2].fieldId}}">{{field.stack[2].fieldName}}</label>
-                    <input type="{{field.stack[2].fieldType}}" class="form-control" id="{{field.stack[2].fieldId}}"
-                           ng-model="$parent[field.stack[2].fieldId]"
-                           placeholder="{{field.stack[2].placeholder}}"
-                           ng-disabled="!field.stack[2].editBy.includes(roleId) ">
+                    <form-text stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"></form-text>
                 </div>
 
 
