@@ -9,7 +9,8 @@ var appModule = angular.module('myApp', [
     'ui.bootstrap',
     'cfp.loadingBar',
     'ngMaterial',
-    'angular-momentjs'
+    'angular-momentjs',
+    'smart-table'
 ]);
 
 appModule.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
