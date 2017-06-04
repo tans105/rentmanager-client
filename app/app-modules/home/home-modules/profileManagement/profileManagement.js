@@ -1,10 +1,10 @@
 'use strict';
 
 
-appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies, personalDetailsService, $parse, cfpLoadingBar, $log) {
+appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies, Notification, personalDetailsService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
-        var statePlaceholder="Select Native State";
+        var statePlaceholder = "Select Native State";
         $scope.activateModule("profileManagement");
         $scope.roleId = cookieData.roleId;
 
@@ -40,8 +40,8 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                     }
                 }
             }
-            if($scope.state==null)
-            $scope.state=statePlaceholder;
+            if ($scope.state == null)
+                $scope.state = statePlaceholder;
             //Casting String date to Date Object for datepicker//
             $scope.dob = new Date($scope.dob);
             $scope.dt1 = $scope.dob;
@@ -50,15 +50,21 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
         }
         var profileStoreSuccess = function (response) {
             cfpLoadingBar.complete();
-            $log.warn("<--PROFILE STORE RESPONSE-->");
-            if($scope.state==null){
-                $scope.state=statePlaceholder;
+            if ($scope.state == null) {
+                $scope.state = statePlaceholder;
             }
-            $log.info(response);
+            $log.warn("<--PROFILE STORE RESPONSE-->");
+            if (angular.isDefined(response) && response.status == 200) {
+                Notification.success({message: 'Profile Updated Successfully', positionY: 'top', positionX: 'left'});
+                $log.info(response);
+            }else{
+                Notification.error({message: 'Profile Update Failed', positionY: 'top', positionX: 'left'});
+                $log.info(response);
+            }
         }
         $scope.storeInfo = function () {
-            if($scope.state==statePlaceholder){
-                $scope.state=null;
+            if ($scope.state == statePlaceholder) {
+                $scope.state = null;
             }
             for (var property in $scope.personalDetails) {
                 if ($scope.personalDetails.hasOwnProperty(property)) {

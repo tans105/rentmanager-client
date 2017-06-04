@@ -10,8 +10,10 @@ var appModule = angular.module('myApp', [
     'cfp.loadingBar',
     'ngMaterial',
     'angular-momentjs',
-    'smart-table'
+    'smart-table',
+    'ui-notification'
 ]);
+
 
 appModule.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
