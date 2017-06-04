@@ -1,0 +1,4 @@
+<div><label for="{{field.stack[0].fieldId}}">{{field.stack[0].fieldName}}</label>
+    <input type="{{field.stack[0].fieldType}}" class="form-control" id="{{field.stack[0].fieldId}}"
+           ng-model="model"
+           placeholder="{{field.stack[0].placeholder}}" ng-disabled="!field.stack[0].editBy.includes(roleId) "></div>
