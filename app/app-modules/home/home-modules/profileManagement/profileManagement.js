@@ -25,6 +25,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             $log.warn("<--PROFILE FETCH RESPONSE-->");
             $log.info(response);
             if (response.data.success) {
+                personalDetailsService.parseToNumeric(response.data);
 
                 $scope.formSchema = response.data.formSchema;
                 $scope.personalDetails = response.data.personalDetails;
