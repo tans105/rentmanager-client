@@ -16,11 +16,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='date'">
-                    <label for="{{field.stack[0].fieldId}}">{{field.stack[0].fieldName}}</label>
-                    <md-datepicker class="form-control" style="padding-top: 0px;" ng-model="dt1"
-                                   ng-change="$parent[field.stack[0].fieldId] = dt1"
-                                   md-placeholder="{{field.stack[0].placeholder}}"
-                                   ng-disabled="!field.stack[0].editBy.includes(roleId)"></md-datepicker>
+                    <form-datepicker stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]" date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='select'">
@@ -39,11 +35,7 @@
                 <!--Second column-->
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='date'">
-                    <label for="{{field.stack[1].fieldId}}">{{field.stack[1].fieldName}}</label>
-                    <md-datepicker class="form-control" style="padding-top: 1px;" ng-model="dt1"
-                                   ng-change="$parent[field.stack[1].fieldId] = dt1"
-                                   md-placeholder="{{field.stack[1].placeholder}}"
-                                   ng-disabled="!field.stack[1].editBy.includes(roleId)"></md-datepicker>
+                    <form-datepicker stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]" date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='select'">
@@ -71,11 +63,7 @@
                 <!--First column -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='date'">
-                    <label for="{{field.stack[0].fieldId}}">{{field.stack[0].fieldName}}</label>
-                    <md-datepicker class="form-control" style="padding-top: 0px;" ng-model="dt1"
-                                   ng-change="$parent[field.stack[0].fieldId] = dt1"
-                                   md-placeholder="{{field.stack[0].placeholder}}"
-                                   ng-disabled="!field.stack[0].editBy.includes(roleId)"></md-datepicker>
+                    <form-datepicker stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]" date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='select'">
@@ -94,11 +82,7 @@
                 <!--Second column-->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='date'">
-                    <label for="{{field.stack[1].fieldId}}">{{field.stack[1].fieldName}}</label>
-                    <md-datepicker class="form-control" style="padding-top: 1px;" ng-model="dt1"
-                                   ng-change="$parent[field.stack[1].fieldId] = dt1"
-                                   md-placeholder="{{field.stack[1].placeholder}}"
-                                   ng-disabled="!field.stack[1].editBy.includes(roleId)"></md-datepicker>
+                    <form-datepicker stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]" date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='select'">
@@ -117,11 +101,7 @@
                 <!--Third column of row will choose between text/date/select-->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[2].fieldType=='date'">
-                    <label for="{{field.stack[2].fieldId}}">{{field.stack[2].fieldName}}</label>
-                    <md-datepicker class="form-control" style="padding-top: 2px;" ng-model="dt1"
-                                   ng-change="$parent[field.stack[2].fieldId] = dt1"
-                                   md-placeholder="{{field.stack[2].placeholder}}"
-                                   ng-disabled="!field.stack[2].editBy.includes(roleId)"></md-datepicker>
+                    <form-datepicker stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]" date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[2].fieldType=='select'">

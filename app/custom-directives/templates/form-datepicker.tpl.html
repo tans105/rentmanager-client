@@ -1,0 +1,7 @@
+<div>
+    <label for="{{stack.fieldId}}">{{stack.fieldName}}</label>
+    <md-datepicker class="form-control" style="padding-top: 0px;" ng-model="date"
+                   ng-change="model = date"
+                   md-placeholder="{{stack.placeholder}}"
+                   ng-disabled="!stack.editBy.includes(roleId)"></md-datepicker>
+</div>
