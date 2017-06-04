@@ -1,10 +1,14 @@
 <form ng-submit="storeInfo()">
     <div class="form-group" ng-repeat="field in formSchema">
-        <!--1 Field to occupy entire row-->
+
+        <!--1 Field to occupy entire row------------------------------------------------------------------>
+
+
         <div ng-show="field.size==1">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <form-text stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
+                    <form-text stack="field.stack[0]" role-id="roleId"
+                               model="$parent[field.stack[0].fieldId]"></form-text>
                 </div>
             </div>
         </div>
@@ -14,42 +18,41 @@
 
         <div ng-show="field.size==2">
             <div class="row">
+
+
+                <!--First column-->
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='date'">
-                    <form-datepicker stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]" date="dt1"></form-datepicker>
+                    <form-datepicker stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"
+                                     date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='select'">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                    <form-select stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"
+                                 select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
-                     ng-show="field.stack[0].fieldType!='date' && field.stack[0].fieldType!='select' ">
-                    <form-text stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
+                     ng-show="field.stack[0].fieldType=='text'">
+                    <form-text stack="field.stack[0]" role-id="roleId"
+                               model="$parent[field.stack[0].fieldId]"></form-text>
                 </div>
+
+
                 <!--Second column-->
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='date'">
-                    <form-datepicker stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]" date="dt1"></form-datepicker>
+                    <form-datepicker stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"
+                                     date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='select'">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                    <form-select stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"
+                                 select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
-                     ng-show="field.stack[1].fieldType!='date' && field.stack[1].fieldType!='select' ">
-                    <form-text stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"></form-text>
+                     ng-show="field.stack[1].fieldType=='text'">
+                    <form-text stack="field.stack[1]" role-id="roleId"
+                               model="$parent[field.stack[1].fieldId]"></form-text>
                 </div>
             </div>
         </div>
@@ -60,61 +63,59 @@
 
         <div ng-show="field.size==3">
             <div class="row">
+
+
                 <!--First column -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='date'">
-                    <form-datepicker stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]" date="dt1"></form-datepicker>
+                    <form-datepicker stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"
+                                     date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[0].fieldType=='select'">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                    <form-select stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"
+                                 select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-                     ng-show="field.stack[0].fieldType!='date' && field.stack[0].fieldType!='select' ">
-                    <form-text stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"></form-text>
+                     ng-show="field.stack[0].fieldType=='text'">
+                    <form-text stack="field.stack[0]" role-id="roleId"
+                               model="$parent[field.stack[0].fieldId]"></form-text>
                 </div>
+
+
                 <!--Second column-->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='date'">
-                    <form-datepicker stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]" date="dt1"></form-datepicker>
+                    <form-datepicker stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"
+                                     date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[1].fieldType=='select'">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                    <form-select stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"
+                                 select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-                     ng-show="field.stack[1].fieldType!='date' && field.stack[1].fieldType!='select' ">
-                    <form-text stack="field.stack[1]" role-id="roleId" model="$parent[field.stack[1].fieldId]"></form-text>
+                     ng-show="field.stack[1].fieldType=='text'">
+                    <form-text stack="field.stack[1]" role-id="roleId"
+                               model="$parent[field.stack[1].fieldId]"></form-text>
                 </div>
-                <!--Third column of row will choose between text/date/select-->
+
+
+                <!--Third column -->
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[2].fieldType=='date'">
-                    <form-datepicker stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]" date="dt1"></form-datepicker>
+                    <form-datepicker stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"
+                                     date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
                      ng-show="field.stack[2].fieldType=='select'">
-                    <label for={{field.stack[2].fieldId}}>{{field.stack[2].fieldName}}</label>
-                    <select class="form-control" id={{field.stack[2].fieldId}}
-                            ng-model="$parent[field.stack[2].fieldId]">
-                        <option selected="selected" disabled="disabled">{{field.stack[2].placeholder}}</option>
-                        <option ng-repeat="option in selectList">{{option}}</option>
-                    </select>
+                    <form-select stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"
+                                     select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"
-                     ng-show="field.stack[2].fieldType!='date' && field.stack[2].fieldType!='select' ">
-                    <form-text stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"></form-text>
+                     ng-show="field.stack[2].fieldType=='text'">
+                    <form-text stack="field.stack[2]" role-id="roleId"
+                               model="$parent[field.stack[2].fieldId]"></form-text>
                 </div>
 
 

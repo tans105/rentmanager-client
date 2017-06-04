@@ -1,0 +1,8 @@
+<div>
+    <label for={{stack.fieldId}}>{{stack.fieldName}}</label>
+    <select class="form-control" id={{stack.fieldId}}
+            ng-model="model">
+        <option selected="selected" disabled="disabled">{{stack.placeholder}}</option>
+        <option ng-repeat="option in selectList">{{option}}</option>
+    </select>
+</div>
