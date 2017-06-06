@@ -116,7 +116,16 @@
 
             </div><!--row-->
         </div><!--field length-->
+
     </div><!--form group-->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <label>Role</label>
+            <select class="form-control" ng-model="selectedRole">
+                <option ng-repeat="role in roleMst" value="{{role.code}}">{{role.name}}</option>
+            </select>
+        </div>
+    </div>
     <hr>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -21,7 +21,8 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
                 $scope.personalDetails = response.data.personalDetails;
                 $scope.selectList33 = response.data.stateMst;
                 $scope.selectList21 = response.data.idProofMst;
-
+                $scope.roleMst=response.data.roleMst;
+                $scope.selectedRole=$scope.roleMst[0].code;
 
                 for (var property in $scope.personalDetails) {
                     if ($scope.personalDetails.hasOwnProperty(property)) {
@@ -58,7 +59,6 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
         }
 
         $scope.addUser = function () {
-            console.log("Adding");
             if ($scope.state == statePlaceholder) {
                 $scope.state = null;
             }
@@ -76,7 +76,7 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
             }
 
             cfpLoadingBar.start();
-            userManagementService.addUser(cookieData.token, $scope.personalDetails, 1,  userAddSuccess);
+            userManagementService.addUser(cookieData.token, $scope.personalDetails, $scope.selectedRole,  userAddSuccess);
         }
     }
 });
