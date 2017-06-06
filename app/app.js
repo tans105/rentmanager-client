@@ -79,6 +79,13 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             parent: 'home',
             templateUrl: 'app-modules/home/home-modules/roomManagement/roomManagement.html',
             controller: 'RoomManagementCtrl'
+        })
+        .state({
+            name: 'home.addUser',
+            url: 'addUser',
+            parent: 'home',
+            templateUrl: 'app-modules/home/home-modules/userManagement/add/addUser.html',
+            controller: 'AddUserCtrl'
         });
     $urlRouterProvider.otherwise('/home/404');
 
