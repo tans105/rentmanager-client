@@ -11,7 +11,7 @@
                                      date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="field.stack[0].fieldType=='select'">
-                    <form-select stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"
+                    <form-select stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"
                                  select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="field.stack[0].fieldType=='text' || field.stack[0].fieldType=='email' || field.stack[0].fieldType=='number'">
@@ -34,7 +34,7 @@
                                      date="dt1"></form-datepicker>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-show="field.stack[0].fieldType=='select'">
-                    <form-select stack="field.stack[2]" role-id="roleId" model="$parent[field.stack[2].fieldId]"
+                    <form-select stack="field.stack[0]" role-id="roleId" model="$parent[field.stack[0].fieldId]"
                                  select-list="selectList"></form-select>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-show="field.stack[0].fieldType=='text' || field.stack[0].fieldType=='email' || field.stack[0].fieldType=='number'">
