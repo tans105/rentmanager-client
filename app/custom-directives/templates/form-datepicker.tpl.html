@@ -1,5 +1,5 @@
 <div>
-    <label for="{{stack.fieldId}}">{{stack.fieldName}}</label>
+    <label ng-class="{mandatory: stack.isMandatory=='1'}" for="{{stack.fieldId}}">{{stack.fieldName}}</label>
     <md-datepicker class="form-control" style="padding-top: 0px;" ng-model="date"
                    ng-change="model = date"
                    md-placeholder="{{stack.placeholder}}"

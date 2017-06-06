@@ -1,8 +1,8 @@
 <div>
-    <label for={{stack.fieldId}}>{{stack.fieldName}}</label>
+    <label ng-class="{mandatory: stack.isMandatory=='1'}" for={{stack.fieldId}}>{{stack.fieldName}}</label>
     <select class="form-control" id={{stack.fieldId}}
-            ng-model="model">
-        <option selected="selected" disabled="disabled">{{stack.placeholder}}</option>
+            ng-model="model" ng-required="stack.isMandatory=='1'">
+        <option selected="selected" disabled="disabled" >{{stack.placeholder}}</option>
         <option ng-repeat="option in selectList">{{option}}</option>
     </select>
 </div>
