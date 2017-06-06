@@ -1,4 +1,5 @@
-<div><label for="{{stack.fieldId}}">{{stack.fieldName}}</label>
+<div><label ng-class="{mandatory: stack.isMandatory=='1'}" for="{{stack.fieldId}}">{{stack.fieldName}}</label>
     <input type="{{stack.fieldType}}" class="form-control" id="{{stack.fieldId}}"
            ng-model="model"
-           placeholder="{{stack.placeholder}}" ng-disabled="!stack.editBy.includes(roleId) "></div>
+           placeholder="{{stack.placeholder}}" ng-disabled="!stack.editBy.includes(roleId)"
+           ng-required="stack.isMandatory=='1'"></div>
