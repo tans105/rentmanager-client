@@ -5,6 +5,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         var statePlaceholder = "Select Native State";
+        var idproofPlaceholder = "Select Id proof";
         $scope.activateModule("profileManagement");
         $scope.roleId = cookieData.roleId;
 
@@ -18,7 +19,8 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
 
                 $scope.formSchema = response.data.formSchema;
                 $scope.personalDetails = response.data.personalDetails;
-                $scope.selectList = response.data.stateMst;
+                $scope.selectList33 = response.data.stateMst;
+                $scope.selectList21 = response.data.idProofMst;
                 for (var property in $scope.personalDetails) {
                     if ($scope.personalDetails.hasOwnProperty(property)) {
                         if (property == 'userId') {
@@ -31,6 +33,8 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                 }
                 if ($scope.state == null)
                     $scope.state = statePlaceholder;
+                if ($scope.idproof == null)
+                    $scope.idproof = idproofPlaceholder;
                 //Casting String date to Date Object for datepicker//
                 $scope.dob = new Date($scope.dob);
                 $scope.dt1 = $scope.dob;
@@ -50,6 +54,8 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             if ($scope.state == null) {
                 $scope.state = statePlaceholder;
             }
+            if ($scope.idproof == idproofPlaceholder)
+                $scope.idproof = null;
             $log.warn("<--PROFILE STORE RESPONSE-->");
             if (angular.isDefined(response) && response.status == 200) {
                 Notification.success({message: 'Profile Updated Successfully', positionY: 'top', positionX: 'left'});
@@ -69,6 +75,8 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             if ($scope.state == statePlaceholder) {
                 $scope.state = null;
             }
+            if ($scope.idproof == idproofPlaceholder)
+                $scope.idproof = null;
             for (var property in $scope.personalDetails) {
                 if ($scope.personalDetails.hasOwnProperty(property)) {
                     if (property == 'userId') {
