@@ -8,18 +8,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
         $scope.activateModule("profileManagement");
         $scope.roleId = cookieData.roleId;
 
-        var stateFetchSuccess = function (response) {
-            if (angular.isDefined(response)) {
-                $scope.selectList = response.data.state;
-            }
-            else {
-                $log.error("Failed to fetch State List");
-            }
-        }
-
-        personalDetailsService.fetchStateList(stateFetchSuccess);
-
-
+        //Callback for profile fetch
         var profileFetchSuccess = function (response) {
             cfpLoadingBar.complete();
             $log.warn("<--PROFILE FETCH RESPONSE-->");
@@ -29,7 +18,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
 
                 $scope.formSchema = response.data.formSchema;
                 $scope.personalDetails = response.data.personalDetails;
-
+                $scope.selectList = response.data.stateMst;
                 for (var property in $scope.personalDetails) {
                     if ($scope.personalDetails.hasOwnProperty(property)) {
                         if (property == 'userId') {
@@ -40,15 +29,22 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                         }
                     }
                 }
+                if ($scope.state == null)
+                    $scope.state = statePlaceholder;
+                //Casting String date to Date Object for datepicker//
+                $scope.dob = new Date($scope.dob);
+                $scope.dt1 = $scope.dob;
             }
-            if ($scope.state == null)
-                $scope.state = statePlaceholder;
-            //Casting String date to Date Object for datepicker//
-            $scope.dob = new Date($scope.dob);
-            $scope.dt1 = $scope.dob;
-            //--------------------------------------------------//
-
+            else {
+                Notification.error({
+                    message: 'Failed to load profile, Login again!',
+                    positionY: 'top',
+                    positionX: 'left'
+                });
+            }
         }
+
+        //Callback for profile update
         var profileStoreSuccess = function (response) {
             cfpLoadingBar.complete();
             if ($scope.state == null) {
@@ -58,11 +54,17 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             if (angular.isDefined(response) && response.status == 200) {
                 Notification.success({message: 'Profile Updated Successfully', positionY: 'top', positionX: 'left'});
                 $log.info(response);
-            }else{
-                Notification.error({message: 'Profile Update Failed', positionY: 'top', positionX: 'left'});
+            } else {
+                Notification.error({
+                    message: 'Profile Update Failed, Contact Admin!',
+                    positionY: 'top',
+                    positionX: 'left'
+                });
                 $log.info(response);
             }
         }
+
+
         $scope.storeInfo = function () {
             if ($scope.state == statePlaceholder) {
                 $scope.state = null;
@@ -81,6 +83,7 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
             cfpLoadingBar.start();
             personalDetailsService.storeProfile(cookieData.token, $scope.personalDetails, profileStoreSuccess);
         }
+
 
         cfpLoadingBar.start();
         personalDetailsService.fetchProfile(cookieData.token, profileFetchSuccess);
