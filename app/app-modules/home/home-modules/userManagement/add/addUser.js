@@ -14,7 +14,7 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
         console.log("controller reporting");
         var templateFetchSuccess = function (response) {
             cfpLoadingBar.complete();
-            $log.warn("<--NEW USER FETCH RESPONSE-->");
+            $log.warn("<--NEW USER TEMPLATE FETCH RESPONSE-->");
             $log.info(response);
             if (response.data.success) {
                 $scope.formSchema = response.data.formSchema;
@@ -55,7 +55,19 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
 
 
         var userAddSuccess=function(response){
-            console.log(response);
+            $log.warn("<--NEW USER STORE-->");
+            $log.info(response);
+            cfpLoadingBar.complete();
+            if(response.data.success){
+                Notification.success({message: 'User '+response.data.userId+' created successfully', positionY: 'top', positionX: 'left'});
+            }
+            else{
+                Notification.error({
+                    message: response.data.responseMsg,
+                    positionY: 'top',
+                    positionX: 'left'
+                });
+            }
         }
 
         $scope.addUser = function () {
