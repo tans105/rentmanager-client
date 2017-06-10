@@ -94,7 +94,8 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                     }
                 }
             }
-
+            console.log($scope);
+            debugger;
             cfpLoadingBar.start();
             personalDetailsService.storeProfile(cookieData.token, $scope.personalDetails, profileStoreSuccess);
         }

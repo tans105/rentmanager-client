@@ -1,7 +1,13 @@
 <div>
     <label ng-class="{mandatory: stack.isMandatory=='1'}" for="{{stack.fieldId}}">{{stack.fieldName}}</label>
-    <md-datepicker class="form-control" style="padding-top: 0px;" ng-model="date"
-                   ng-change="model = date"
-                   md-placeholder="{{stack.placeholder}}"
-                   ng-disabled="!stack.editBy.includes(roleId)"></md-datepicker>
+    <!--<md-datepicker class="form-control" style="padding-top: 0px;" ng-model="date"-->
+                   <!--ng-change="model = date"-->
+                   <!--md-placeholder="{{stack.placeholder}}"-->
+                   <!--ng-disabled="!stack.editBy.includes(roleId)"></md-datepicker>-->
+    <p class="input-group">
+        <input type="text" class="form-control" is-open="popup2.opened" uib-datepicker-popup ng-model="date" ng-change="dateValChange()"  ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+    </p>
 </div>

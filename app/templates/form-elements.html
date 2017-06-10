@@ -1,0 +1,16 @@
+<div ng-repeat="item in field.stack" ng-class="{'col-lg-12 col-xs-12': field.size == 1, 'col-lg-6 col-xs-6' : field.size == 2, 'col-lg-4 col-xs-4': field.size == 3 }">
+    <div ng-switch on="item.fieldType">
+        <div ng-switch-when="date">
+            <form-datepicker stack="item" role-id="roleId" model="$parent[item.fieldId]"
+                             date="dt1"></form-datepicker>
+        </div>
+        <div ng-switch-when="select">
+            <form-select stack="item" role-id="roleId" model="$parent[item.fieldId]"
+                         select-list="selectList11"></form-select>
+        </div>
+        <div ng-switch-default>
+            <form-text stack="item" role-id="roleId"
+                       model="$parent[item.fieldId]"></form-text>
+        </div>
+    </div>
+</div>
