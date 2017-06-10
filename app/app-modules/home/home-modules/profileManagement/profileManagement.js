@@ -58,8 +58,15 @@ appModule.controller('ProfileManagementCtrl', function ($scope, $state, $cookies
                 $scope.idproof = null;
             $log.warn("<--PROFILE STORE RESPONSE-->");
             if (angular.isDefined(response) && response.status == 200) {
-                Notification.success({message: 'Profile Updated Successfully', positionY: 'top', positionX: 'left'});
-                $log.info(response);
+                if (response.data.success) {
+                    Notification.success({message: response.data.responseMsg, positionY: 'top', positionX: 'left'});
+                    $log.info(response);
+                }
+                else {
+                    Notification.error({message: response.data.responseMsg, positionY: 'top', positionX: 'left'});
+                    $log.info(response);
+                }
+
             } else {
                 Notification.error({
                     message: 'Profile Update Failed, Contact Admin!',
