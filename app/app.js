@@ -45,12 +45,19 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app-modules/home/home-modules/404/404.html',
             controller: '404Ctrl'
         })
+        // .state({
+        //     name: 'home.profileManagement',
+        //     url: '/profileManagement',
+        //     parent: 'home',
+        //     templateUrl: 'app-modules/home/home-modules/profileManagement/profileManagement.html',
+        //     controller: 'ProfileManagementCtrl'
+        // })
         .state({
-            name: 'home.profileManagement',
-            url: '/profileManagement',
+            name: 'home.personalDetails',
+            url: '/personalDetails',
             parent: 'home',
-            templateUrl: 'app-modules/home/home-modules/profileManagement/profileManagement.html',
-            controller: 'ProfileManagementCtrl'
+            templateUrl: 'app-modules/home/home-modules/personalDetails/personalDetails.html',
+            controller: 'PersonalDetailsCtrl'
         })
         .state({
             name: 'home.userManagement',

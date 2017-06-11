@@ -12,5 +12,9 @@ appModule.directive('formSelect', function () {
         },
         replace:true,
         templateUrl: 'custom-directives/templates/form-select.tpl.html',
+        controller: function($scope){
+            if($scope.model==null)
+            $scope.model = $scope.stack.placeholder;
+        }
     };
 });

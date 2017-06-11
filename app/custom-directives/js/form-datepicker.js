@@ -7,9 +7,7 @@ appModule.directive('formDatepicker', function () {
         scope: {
             stack: '=',
             roleId: '=',
-            date:'=',
-            model:'=',
-            submitChangedValue: '='
+            model:'='
         },
         replace:true,
         templateUrl: 'custom-directives/templates/form-datepicker.tpl.html',
@@ -21,11 +19,6 @@ appModule.directive('formDatepicker', function () {
             $scope.open2 = function() {
                 $scope.popup2.opened = true;
             };
-
-            $scope.dateValChange = function(){
-                $scope.model = $scope.date;
-                $scope.submitChangedValue($scope.model);
-            }
         }
     };
 });

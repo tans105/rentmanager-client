@@ -1,0 +1,20 @@
+<div class="form-group" ng-repeat="field in formSchema">
+    <div class="row">
+        <div ng-repeat="item in field.stack"
+             ng-class="{'col-lg-12 col-md-12 col-sm-12 col-xs-12': field.size == 1, 'col-lg-6 col-md-6 col-sm-12 col-xs-12 ' : field.size == 2, 'col-lg-4 col-md-4 col-sm-6 col-xs-12': field.size == 3 }">
+
+            <div ng-switch on="item.fieldType">
+                <div ng-switch-when="date">
+                    <form-datepicker stack="item" role-id="roleId" model="item.value"></form-datepicker>
+                </div>
+                <div ng-switch-when="select">
+                    <form-select stack="item" role-id="roleId" model="item.value"
+                                 select-list="item.selectList"></form-select>
+                </div>
+                <div ng-switch-default>
+                    <form-text stack="item" role-id="roleId" model="item.value"></form-text>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
