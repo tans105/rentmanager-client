@@ -7,9 +7,11 @@ appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, 
         $scope.activateModule("personalDetails");
         $scope.roleId = cookieData.roleId;
         var personalDetails = null;
+        var statePlaceholder = "Select Native State";
+        var idproofPlaceholder = "Select Id proof";
+
 
         //Callback for profile fetch
-
         var profileFetchSuccess = function (response) {
             cfpLoadingBar.complete();
             $log.warn("<--PROFILE FETCH RESPONSE-->");
@@ -22,11 +24,11 @@ appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, 
 
                 angular.forEach($scope.formSchema, function (row) {
                     angular.forEach(row.stack, function (stack) {
-                        if(stack.fieldId=='idproof'){
-                            stack.selectList=response.data.idProofMst;
+                        if (stack.fieldId == 'idproof') {
+                            stack.selectList = response.data.idProofMst;
                         }
-                        if(stack.fieldId=='state'){
-                            stack.selectList=response.data.stateMst;
+                        if (stack.fieldId == 'state') {
+                            stack.selectList = response.data.stateMst;
                         }
                         for (var key in personalDetails) {
                             if (key == stack.fieldId) {
@@ -73,6 +75,12 @@ appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, 
             angular.forEach($scope.formSchema, function (row) {
                 angular.forEach(row.stack, function (stack) {
                     for (var key in personalDetails) {
+                        if (stack.value == statePlaceholder) {
+                            stack.value = null;
+                        }
+                        if (stack.value == idproofPlaceholder) {
+                            stack.value = null;
+                        }
                         if (key == stack.fieldId) {
                             personalDetails[key] = stack.value;
                         }

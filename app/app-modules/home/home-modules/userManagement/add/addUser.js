@@ -9,6 +9,8 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
         $scope.roleId = cookieData.roleId;
         var statePlaceholder = "Select Native State";
         var idproofPlaceholder = "Select Id proof";
+        var personalDetails=null;
+
 
 
         console.log("controller reporting");
@@ -17,30 +19,29 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
             $log.warn("<--NEW USER TEMPLATE FETCH RESPONSE-->");
             $log.info(response);
             if (response.data.success) {
+                userManagementService.parseToNumeric(response.data);
+
                 $scope.formSchema = response.data.formSchema;
-                $scope.personalDetails = response.data.personalDetails;
-                $scope.selectList33 = response.data.stateMst;
-                $scope.selectList21 = response.data.idProofMst;
+                personalDetails = response.data.personalDetails;
                 $scope.roleMst=response.data.roleMst;
                 $scope.selectedRole=$scope.roleMst[0].code;
 
-                for (var property in $scope.personalDetails) {
-                    if ($scope.personalDetails.hasOwnProperty(property)) {
-                        if (property == 'userId') {
-                            continue;
+                angular.forEach($scope.formSchema, function (row) {
+                    angular.forEach(row.stack, function (stack) {
+                        if (stack.fieldId == 'idproof') {
+                            stack.selectList = response.data.idProofMst;
                         }
-                        else {
-                            $parse(property).assign($scope, $scope.personalDetails[property]);
+                        if (stack.fieldId == 'state') {
+                            stack.selectList = response.data.stateMst;
                         }
-                    }
-                }
-                if ($scope.state == null)
-                    $scope.state = statePlaceholder;
-                if ($scope.idproof == null)
-                    $scope.idproof = idproofPlaceholder;
-                //Casting String date to Date Object for datepicker//
-                $scope.dob = new Date($scope.dob);
-                $scope.dt1 = $scope.dob;
+                        for (var key in personalDetails) {
+                            if (key == stack.fieldId) {
+                                stack.value = personalDetails[key];
+                            }
+                        }
+                    });
+                });
+
             }
             else {
                 Notification.error({
@@ -71,24 +72,24 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
         }
 
         $scope.addUser = function () {
-            if ($scope.state == statePlaceholder) {
-                $scope.state = null;
-            }
-            if ($scope.idproof == idproofPlaceholder)
-                $scope.idproof = null;
-            for (var property in $scope.personalDetails) {
-                if ($scope.personalDetails.hasOwnProperty(property)) {
-                    if (property == 'userId') {
-                        continue;
+            angular.forEach($scope.formSchema, function (row) {
+                angular.forEach(row.stack, function (stack) {
+                    for (var key in personalDetails) {
+                        if (stack.value == statePlaceholder) {
+                            stack.value = null;
+                        }
+                        if (stack.value == idproofPlaceholder) {
+                            stack.value = null;
+                        }
+                        if (key == stack.fieldId) {
+                            personalDetails[key] = stack.value;
+                        }
                     }
-                    else {
-                        $scope.personalDetails[property] = $scope[property];
-                    }
-                }
-            }
+                })
+            });
 
             cfpLoadingBar.start();
-            userManagementService.addUser(cookieData.token, $scope.personalDetails, $scope.selectedRole,  userAddSuccess);
+            userManagementService.addUser(cookieData.token, personalDetails, $scope.selectedRole,  userAddSuccess);
         }
     }
 });
