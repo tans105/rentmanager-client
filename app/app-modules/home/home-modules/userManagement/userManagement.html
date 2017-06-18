@@ -1,34 +1,29 @@
 <div style="float: right;">
     <button class="btn btn-primary" ui-sref="home.addUser">Create New</button>
 </div>
+<hr>
 <div>
-    <table st-table="rowCollection" class="table table-striped">
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th st-sort="firstName">first name</th>
-            <th st-sort="lastName">last name</th>
-            <th st-sort="birthDate">birth date</th>
-            <th st-sort="balance">balance</th>
-            <th>email</th>
+            <th ng-repeat="header in columnHeaders">{{header}}</th>
         </tr>
-
         </thead>
         <tbody>
         <tr ng-repeat="row in rowCollection">
-            <td>{{row.firstName | uppercase}}</td>
-            <td>{{row.lastName}}</td>
-            <td>{{row.age | date}}</td>
-            <td>{{row.balance | currency}}</td>
+            <td>{{row.user_id}}</td>
+            <td>{{row.first_name | uppercase}}</td>
+            <td>{{row.last_name | uppercase}}</td>
+            <td>26 Feb, 1993</td>
+            <td>{{row.role | uppercase}}</td>
             <td>
                 <div class="row">
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-primary">Edit</button>
                         <button class="btn btn-success">View</button>
                         <button class="btn btn-danger">Remove</button>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
-                    </div>
                 </div>
             </td>
         </tr>
@@ -36,7 +31,7 @@
         <tfoot>
         <tr>
             <td colspan="5" class="text-center">
-                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+                <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
             </td>
         </tr>
         </tfoot>

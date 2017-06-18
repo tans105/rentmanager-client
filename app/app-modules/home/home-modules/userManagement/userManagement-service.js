@@ -50,4 +50,20 @@ appModule.service('userManagementService', function ($http) {
             }
         });
     }
+
+    this.fetchHostelData = function (token,callback) {
+        $http({
+            url: "http://localhost:8080/api/user/fetchHostelData",
+            method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function (response) {
+                    callback(response);
+                },
+                function (response) {
+                    callback();
+                });
+    }
 });

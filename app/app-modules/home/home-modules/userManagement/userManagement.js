@@ -1,32 +1,36 @@
 'use strict';
 
-appModule.controller('UserManagementCtrl',['$scope',function($scope){
-    var
-        nameList = ['Pierre', 'Pol', 'Jacques', 'Robert', 'Elisa'],
-        familyName = ['Dupont', 'Germain', 'Delcourt', 'bjip', 'Menez'];
+appModule.controller('UserManagementCtrl', function ($scope, $state, $cookies, Notification, userManagementService, $parse, cfpLoadingBar, $log) {
+    var cookieData = $cookies.getObject('cookieData');
+    if (cookieData) {
+        var rowsPerPage = 2;
+        $scope.rowCollection = null;
+        $scope.columnHeaders=["User ID","First Name","Last Name","Joined On","Role","Action"];
+        var data = null;
+        var tableDataFetchSuccess = function (response) {
+            $log.warn("<--Table Data-->")
+            $log.info(response);
+            if (response.data.success) {
+                $scope.currentPage = 1;
+                //3
+                data = response.data.tableData;
+                $scope.totalItems =data.length/rowsPerPage*10;
+                $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
+            }
+            else {
+                Notification.error({
+                    message: 'Something went wrong, Contact Admin!',
+                    positionY: 'top',
+                    positionX: 'left'
+                });
+            }
+        }
+        userManagementService.fetchHostelData(cookieData.token, tableDataFetchSuccess);
 
-    function createRandomItem() {
-        var
-            firstName = nameList[Math.floor(Math.random() * 4)],
-            lastName = familyName[Math.floor(Math.random() * 4)],
-            age = Math.floor(Math.random() * 100),
-            email = firstName + lastName + '@whatever.com',
-            balance = Math.random() * 3000;
-
-        return{
-            firstName: firstName,
-            lastName: lastName,
-            age: age,
-            email: email,
-            balance: balance
+        $scope.pageChanged = function () {
+            $scope.rowCollection = angular.copy(data).splice(($scope.currentPage - 1) * rowsPerPage, rowsPerPage);
         };
+
+
     }
-
-    $scope.itemsByPage=5;
-
-    $scope.rowCollection = [];
-    for (var j = 0; j < 200; j++) {
-        $scope.rowCollection.push(createRandomItem());
-    }
-
-}]);
+});
