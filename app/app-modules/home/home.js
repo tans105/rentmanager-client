@@ -24,9 +24,22 @@ appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookie
             if(module.moduleLink == currentLocation){
                 console.log(module);
                 $scope.selectedModule = module;
-                $state.go("home." + module.moduleLink);
+                $state.go(module.moduleLink);
             }
         });
+
+        $scope.checkForChildStates = function(module){
+            var isActive = false;
+            if(module.moduleLink == 'home.userManagement.details' && $state.current.name == 'home.userManagement.addUser'){
+                isActive = true;
+            }
+
+            if(isActive){
+                return "active";
+            }else{
+                return false;
+            }
+        }
 
     }
 

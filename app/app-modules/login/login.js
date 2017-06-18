@@ -16,7 +16,7 @@ appModule.controller('LoginCtrl', function ($scope, $state, loginService, loader
         if (angular.isDefined(data) && angular.isDefined(data.data) && data.status == 200) {
             if (data.data.success) {
                 loginService.generateCookie(data);
-                $state.go("home." + data.data.moduleList[0].moduleLink);
+                $state.go(data.data.moduleList[0].moduleLink);
             }
             else {
                 $scope.hasError = true;

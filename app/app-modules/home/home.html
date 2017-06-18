@@ -3,8 +3,8 @@
         <div class="left-menu">
             <h3 class="menu-title"> Select module </h3>
             <ul class="nav nav-pills nav-stacked">
-                <li ng-repeat="module in moduleList" ui-sref-active="active">
-                    <a role="presentation" ui-sref="home.{{module.moduleLink}}">{{module.moduleName}}</a>
+                <li ng-repeat="module in moduleList" ui-sref-active="active" ng-class="checkForChildStates(module)">
+                    <a role="presentation" ui-sref="{{module.moduleLink}}">{{module.moduleName}}</a>
                 </li>
             </ul>
         </div>

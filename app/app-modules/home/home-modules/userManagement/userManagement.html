@@ -1,21 +1,29 @@
 <div style="float: right;">
-    <button class="btn btn-primary" ui-sref="home.addUser">Create New</button>
+    <button class="btn btn-primary" ui-sref="{{addUserTransitState}}">Create New</button>
 </div>
 <hr>
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search Anything" ng-model="searchVal">
+        </div>
+    </div>
+</form>
 <div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th ng-repeat="header in columnHeaders">{{header}}</th>
+            <th ng-repeat="header in rowCollection[0] | orderBy : 'order'">
+                {{header.label}}
+            </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="row in rowCollection">
-            <td>{{row.user_id}}</td>
-            <td>{{row.first_name | uppercase}}</td>
-            <td>{{row.last_name | uppercase}}</td>
-            <td>26 Feb, 1993</td>
-            <td>{{row.role | uppercase}}</td>
+        <tr ng-repeat="row in rowCollection | filter:searchVal">
+            <td ng-repeat="rowInstance in row  | orderBy : 'order'">
+                {{rowInstance.value}}
+            </td>
             <td>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

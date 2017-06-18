@@ -63,8 +63,21 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             name: 'home.userManagement',
             url: '/userManagement',
             parent: 'home',
+            template: '<div ui-view></div>'
+        })
+        .state({
+            name: 'home.userManagement.details',
+            url: '/details',
+            parent: 'home.userManagement',
             templateUrl: 'app-modules/home/home-modules/userManagement/userManagement.html',
             controller: 'UserManagementCtrl'
+        })
+        .state({
+            name: 'home.userManagement.addUser',
+            url: '/addUser',
+            parent: 'home.userManagement',
+            templateUrl: 'app-modules/home/home-modules/userManagement/add/addUser.html',
+            controller: 'AddUserCtrl'
         })
         .state({
             name: 'home.roomAllotment',
@@ -86,13 +99,6 @@ appModule.config(function ($stateProvider, $urlRouterProvider) {
             parent: 'home',
             templateUrl: 'app-modules/home/home-modules/roomManagement/roomManagement.html',
             controller: 'RoomManagementCtrl'
-        })
-        .state({
-            name: 'home.addUser',
-            url: 'addUser',
-            parent: 'home',
-            templateUrl: 'app-modules/home/home-modules/userManagement/add/addUser.html',
-            controller: 'AddUserCtrl'
         });
     $urlRouterProvider.otherwise('/home/404');
 
