@@ -2,7 +2,6 @@
 
 appModule.controller('UserManagementCtrl', function ($scope, $state, $cookies, Notification, userManagementService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
-    $scope.addUserTransitState = 'home.userManagement.addUser';
     if (cookieData) {
         var rowsPerPage = 2;
         $scope.rowCollection = undefined;
