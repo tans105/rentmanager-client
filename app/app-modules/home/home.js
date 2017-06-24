@@ -1,11 +1,11 @@
 'use strict';
 
 
-appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies, loaderService) {
+appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         var currentLocation = $state.current.name;
-        if(angular.isUndefined(currentLocation)){
+        if (angular.isUndefined(currentLocation)) {
             $scope.selectedModule = cookieData.moduleList[0];
         }
 
@@ -13,30 +13,29 @@ appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookie
         $scope.moduleList = cookieData.moduleList;
 
         $scope.activateModule = function (moduleName) {
-            angular.forEach($scope.moduleList, function(module){
-                if(module.moduleLink == $scope.moduleName){
+            angular.forEach($scope.moduleList, function (module) {
+                if (module.moduleLink == $scope.moduleName) {
                     $scope.selectedModule = module;
                 }
             });
         };
 
-        angular.forEach($scope.moduleList, function(module){
-            if(module.moduleLink == currentLocation){
+        angular.forEach($scope.moduleList, function (module) {
+            if (module.moduleLink == currentLocation) {
                 console.log(module);
                 $scope.selectedModule = module;
                 $state.go(module.moduleLink);
             }
         });
 
-        $scope.checkForChildStates = function(module){
+        $scope.checkForChildStates = function (module) {
             var isActive = false;
-            if(module.moduleLink == 'home.userManagement.details' && $state.current.name == 'home.userManagement.addUser'){
+            if (module.moduleLink == 'home.userManagement.details' && $state.current.name == 'home.userManagement.addUser') {
                 isActive = true;
             }
-
-            if(isActive){
+            if (isActive) {
                 return "active";
-            }else{
+            } else {
                 return false;
             }
         }

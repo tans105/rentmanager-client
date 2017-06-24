@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('LoginCtrl', function ($scope, $state, loginService, loaderService, cfpLoadingBar, $log) {
+appModule.controller('LoginCtrl', function ($scope, $state, loginService, cfpLoadingBar, $log) {
     $scope.user = {
         userId: 'ADM0000000001',
         password: 'password'
