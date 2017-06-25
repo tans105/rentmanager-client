@@ -3,7 +3,7 @@
  */
 'use strict';
 
-appModule.controller('AddUserCtrl', function ($scope, $state, userManagementService, $cookies, Notification, cfpLoadingBar, $parse, $log) {
+appModule.controller('AddUserCtrl', function ($scope, $state, UserManagementService, $cookies, Notification, cfpLoadingBar, $parse, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.roleId = cookieData.roleId;
@@ -19,7 +19,7 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
             $log.warn("<--NEW USER TEMPLATE FETCH RESPONSE-->");
             $log.info(response);
             if (response.data.success) {
-                userManagementService.parseToNumeric(response.data);
+                UserManagementService.parseToNumeric(response.data);
 
                 $scope.formSchema = response.data.formSchema;
                 personalDetails = response.data.personalDetails;
@@ -52,7 +52,7 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
             }
         }
         cfpLoadingBar.start();
-        userManagementService.fetchTemplate(cookieData.token, templateFetchSuccess);
+        UserManagementService.fetchTemplate(cookieData.token, templateFetchSuccess);
 
 
         var userAddSuccess=function(response){
@@ -89,7 +89,7 @@ appModule.controller('AddUserCtrl', function ($scope, $state, userManagementServ
             });
 
             cfpLoadingBar.start();
-            userManagementService.addUser(cookieData.token, personalDetails, $scope.selectedRole,  userAddSuccess);
+            UserManagementService.addUser(cookieData.token, personalDetails, $scope.selectedRole,  userAddSuccess);
         }
     }
 });

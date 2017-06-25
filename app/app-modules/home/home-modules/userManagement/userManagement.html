@@ -19,6 +19,7 @@
             <th ng-repeat="header in rowCollection[0] | orderBy : 'order'">
                 {{header.label}}
             </th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -29,9 +30,9 @@
             <td>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-success">View</button>
-                        <button class="btn btn-danger">Remove</button>
+                        <button class="btn btn-primary" ng-click="performAction('e',row)">Edit</button>
+                        <button class="btn btn-success" ng-click="performAction('v',row)">View</button>
+                        <button class="btn btn-danger" ng-click="performAction('r',row)">Remove</button>
                     </div>
 
                 </div>

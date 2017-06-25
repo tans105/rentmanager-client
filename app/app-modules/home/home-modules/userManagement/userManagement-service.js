@@ -4,7 +4,7 @@
 
 'use strict'
 
-appModule.service('userManagementService', function ($http) {
+appModule.service('UserManagementService', function ($http) {
 
     var thisRef = this;
     this.fetchTemplate = function (token, callback) {
@@ -22,7 +22,6 @@ appModule.service('userManagementService', function ($http) {
                     callback();
                 });
     };
-
 
 
     this.addUser = function (token, personalDetails, roleId, callback) {
@@ -55,7 +54,7 @@ appModule.service('userManagementService', function ($http) {
         });
     }
 
-    this.fetchHostelData = function (token,callback) {
+    this.fetchHostelData = function (token, callback) {
         $http({
             url: "http://localhost:8080/api/user/fetchHostelData",
             method: "GET",
@@ -69,5 +68,15 @@ appModule.service('userManagementService', function ($http) {
                 function (response) {
                     callback();
                 });
+    }
+
+    this.fetchUserIdFromTableRow = function (row) {
+        var userId = undefined;
+        angular.forEach(row, function (instance) {
+            if (instance.id == 'user_id') {
+                userId = instance.value;
+            }
+        });
+        return userId;
     }
 });

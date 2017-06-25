@@ -1,6 +1,6 @@
 'use strict';
 
-appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, $state, $cookies, Notification, AppService, userManagementService, $parse, cfpLoadingBar, $log) {
+appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         var rowsPerPage = 10;
@@ -25,7 +25,7 @@ appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, 
                 });
             }
         }
-        userManagementService.fetchHostelData(cookieData.token, tableDataFetchSuccess);
+        UserManagementService.fetchHostelData(cookieData.token, tableDataFetchSuccess);
 
         $scope.pageChanged = function () {
             $scope.rowCollection = angular.copy(data).splice(($scope.currentPage - 1) * rowsPerPage, rowsPerPage);
@@ -48,5 +48,24 @@ appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, 
 
             }, 1000);
         });
+
+        $scope.performAction = function (action, row) {
+            var userId = UserManagementService.fetchUserIdFromTableRow(row);
+            console.log(userId);
+            if (angular.isDefined(userId)) {
+                switch (action) {
+                    case 'e':
+                        alert("Edit :" + userId);
+                        break;
+                    case 'v':
+                        alert("View :" + userId);
+                        break;
+                    default:
+                        alert("Remove :" + userId);
+                        break;
+
+                }
+            }
+        }
     }
 });
