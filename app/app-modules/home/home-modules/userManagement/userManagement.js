@@ -1,9 +1,9 @@
 'use strict';
 
-appModule.controller('UserManagementCtrl', function ($scope, $state, $cookies, Notification, AppService, userManagementService, $parse, cfpLoadingBar, $log) {
+appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, $state, $cookies, Notification, AppService, userManagementService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
-        var rowsPerPage = 2;
+        var rowsPerPage = 10;
         $scope.rowCollection = undefined;
         var data = undefined;
         var tableDataFetchSuccess = function (response) {
@@ -12,7 +12,7 @@ appModule.controller('UserManagementCtrl', function ($scope, $state, $cookies, N
             if (response.data.success) {
                 $scope.currentPage = 1;
                 data = response.data.tableData;
-                $scope.totalItems =data.length/rowsPerPage*10;
+                $scope.totalItems = data.length / rowsPerPage * 10;
                 var colOrder = response.data.tableDataOrder;
                 data = AppService.formatTabularData(data, colOrder);
                 $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
@@ -31,6 +31,22 @@ appModule.controller('UserManagementCtrl', function ($scope, $state, $cookies, N
             $scope.rowCollection = angular.copy(data).splice(($scope.currentPage - 1) * rowsPerPage, rowsPerPage);
         };
 
+        var timer = false;
+        $scope.$watch('searchVal', function (val) {
+            if (timer) {
+                $timeout.cancel(timer)
+            }
+            timer = $timeout(function () {
+                if (!angular.isUndefined(val) && val != null && val != '') {
+                    $scope.rowCollection = $filter("filter")(angular.copy(data), val);
+                    $scope.totalItems = $scope.rowCollection.length / rowsPerPage * 10;
+                }
+                else {
+                    $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
+                    $scope.totalItems = data.length / rowsPerPage * 10;
+                }
 
+            }, 1000);
+        });
     }
 });

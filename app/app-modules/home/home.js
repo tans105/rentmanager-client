@@ -22,7 +22,6 @@ appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookie
 
         angular.forEach($scope.moduleList, function (module) {
             if (module.moduleLink == currentLocation) {
-                console.log(module);
                 $scope.selectedModule = module;
                 $state.go(module.moduleLink);
             }
