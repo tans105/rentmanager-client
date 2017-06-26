@@ -3,19 +3,21 @@
 appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
-        $scope.actionsEnabled=true;
-        var rowsPerPage = 3;
+
+        //Table init//
+        $scope.actionsEnabled = undefined;
         $scope.rowCollection = undefined;
         var data = undefined;
+        var rowsPerPage = 3;
+        $scope.currentPage = 1;
+
         var tableDataFetchSuccess = function (response) {
             $log.warn("<--Table Data-->")
             $log.info(response);
             if (response.data.success) {
-                $scope.currentPage = 1;
-                data = response.data.table.tableData;
+                data = AppService.formatTabularData(response.data.table.tableData, response.data.table.tableDataOrder);
+                $scope.actionsEnabled = response.data.table.actionsEnabled;
                 $scope.totalItems = data.length / rowsPerPage * 10;
-                var colOrder = response.data.table.tableDataOrder;
-                data = AppService.formatTabularData(data, colOrder);
                 $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
             }
             else {
