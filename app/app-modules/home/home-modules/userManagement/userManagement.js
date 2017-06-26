@@ -3,7 +3,8 @@
 appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
-        var rowsPerPage = 10;
+        $scope.actionsEnabled=true;
+        var rowsPerPage = 3;
         $scope.rowCollection = undefined;
         var data = undefined;
         var tableDataFetchSuccess = function (response) {
@@ -11,9 +12,9 @@ appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, 
             $log.info(response);
             if (response.data.success) {
                 $scope.currentPage = 1;
-                data = response.data.tableData;
+                data = response.data.table.tableData;
                 $scope.totalItems = data.length / rowsPerPage * 10;
-                var colOrder = response.data.tableDataOrder;
+                var colOrder = response.data.table.tableDataOrder;
                 data = AppService.formatTabularData(data, colOrder);
                 $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
             }

@@ -19,7 +19,7 @@
             <th ng-repeat="header in rowCollection[0] | orderBy : 'order'">
                 {{header.label}}
             </th>
-            <th>Action</th>
+            <th ng-if="actionsEnabled">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
             <td ng-repeat="rowInstance in row  | orderBy : 'order'">
                 {{rowInstance.value}}
             </td>
-            <td>
+            <td ng-if="actionsEnabled">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <button class="btn btn-primary" ng-click="performAction('e',row)">Edit</button>

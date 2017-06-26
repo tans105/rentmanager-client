@@ -10,7 +10,6 @@ var appModule = angular.module('myApp', [
     'cfp.loadingBar',
     'ngMaterial',
     'angular-momentjs',
-    'smart-table',
     'ui-notification'
 ]);
 
