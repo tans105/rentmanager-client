@@ -15,6 +15,7 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
                 $state.go('login');
             }
         });
+    $rootScope.loading=false;
 
     $scope.isLoggedIn = false;
     $scope.role = '';

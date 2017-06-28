@@ -31,7 +31,7 @@
 
 </head>
 <body ng-cloak ng-controller="myAppCtrl" ng-class="{'image-background': !isLoggedIn}">
-
+<div ng-if="loading" ng-include='"templates/loader.html"'></div>
 <div ng-include='"templates/header.html"'></div>
 <div ui-view></div>
 <div ng-include="'templates/footer.html'"></div>

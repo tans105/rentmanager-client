@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, Notification, personalDetailsService, cfpLoadingBar, $log) {
+appModule.controller('PersonalDetailsCtrl', function ($rootScope, $scope, $state, $cookies, Notification, personalDetailsService, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.activateModule("personalDetails");
@@ -13,7 +13,7 @@ appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, 
 
         //Callback for profile fetch
         var profileFetchSuccess = function (response) {
-            cfpLoadingBar.complete();
+            $rootScope.loading = false;
             $log.warn("<--PROFILE FETCH RESPONSE-->");
             $log.info(response);
             if (response.data.success) {
@@ -50,6 +50,7 @@ appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, 
 
         //Callback for profile update
         var profileStoreSuccess = function (response) {
+            $rootScope.loading = false;
             $log.warn("<--PROFILE STORE RESPONSE-->");
             if (angular.isDefined(response) && response.status == 200) {
                 if (response.data.success) {
@@ -87,12 +88,12 @@ appModule.controller('PersonalDetailsCtrl', function ($scope, $state, $cookies, 
                     }
                 })
             });
-            cfpLoadingBar.start();
+            $rootScope.loading = true;
             personalDetailsService.storeProfile(cookieData.token, personalDetails, profileStoreSuccess);
         }
 
 
-        cfpLoadingBar.start();
+        $rootScope.loading = true;
         personalDetailsService.fetchProfile(cookieData.token, profileFetchSuccess);
     }
 

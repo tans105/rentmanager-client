@@ -1,6 +1,6 @@
 'use strict';
 
-appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $parse, cfpLoadingBar, $log) {
+appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $parse, cfpLoadingBar, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
 
@@ -12,6 +12,7 @@ appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, 
         $scope.currentPage = 1;
 
         var tableDataFetchSuccess = function (response) {
+            $rootScope.loading = false;
             $log.warn("<--Table Data-->")
             $log.info(response);
             if (response.data.success) {
@@ -28,6 +29,7 @@ appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, 
                 });
             }
         }
+        $rootScope.loading = true;
         UserManagementService.fetchHostelData(cookieData.token, tableDataFetchSuccess);
 
         $scope.pageChanged = function () {
@@ -48,9 +50,9 @@ appModule.controller('UserManagementCtrl', function ($filter, $timeout, $scope, 
                     $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
                     $scope.totalItems = data.length / rowsPerPage * 10;
                 }
-
             }, 1000);
         });
+
 
         $scope.performAction = function (action, row) {
             var userId = UserManagementService.fetchUserIdFromTableRow(row);
