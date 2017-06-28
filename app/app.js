@@ -15,8 +15,8 @@ var appModule = angular.module('myApp', [
 
 
 appModule.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeSpinner = false;
-    }]);
+    cfpLoadingBarProvider.includeSpinner = false;
+}]);
 
 appModule.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -102,11 +102,27 @@ appModule.config(function ($httpProvider) {
     $httpProvider.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
 });
 
-appModule.config(function($mdDateLocaleProvider) {
-    $mdDateLocaleProvider.formatDate = function(date) {
+appModule.config(function ($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function (date) {
         return moment(date).format('YYYY-MM-DD');
     };
 });
+
+appModule.factory('unauthorizedAccessInterceptor', function ($log, $q, $injector) {
+    return {
+        response: function (response) {
+            return response;
+        },
+        responseError: function (response) {
+            $injector.get('$state').transitionTo('home.404');
+            return $q.reject(response);
+        }
+    };
+});
+
+appModule.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push('unauthorizedAccessInterceptor');
+}]);
 
 
 
