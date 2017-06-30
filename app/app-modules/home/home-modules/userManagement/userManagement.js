@@ -1,6 +1,6 @@
 'use strict';
 
-appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $parse, cfpLoadingBar, $log) {
+appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $mdDialog, $timeout, $scope, $state, $cookies, Notification, AppService, UserManagementService, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
 
@@ -54,9 +54,8 @@ appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $timeo
         });
 
 
-        $scope.performAction = function (action, row) {
+        $scope.performAction = function (action, row, event) {
             var userId = UserManagementService.fetchUserIdFromTableRow(row);
-            console.log(userId);
             if (angular.isDefined(userId)) {
                 switch (action) {
                     case 'e':
@@ -66,11 +65,25 @@ appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $timeo
                         alert("View :" + userId);
                         break;
                     default:
-                        alert("Remove :" + userId);
+                        removeUser(userId, event);
                         break;
 
                 }
             }
+        }
+
+        var removeUser = function (userId, event) {
+            var confirm = $mdDialog.confirm()
+                .title('Are you sure to delete the User?')
+                .textContent(userId + ' will be deleted permanently.')
+                .targetEvent(event)
+                .ok('Yes')
+                .cancel('No');
+            $mdDialog.show(confirm).then(function () {
+                console.log('Record deleted successfully!');
+            }, function () {
+                console.log('You decided to keep your record.');
+            });
         }
     }
 });

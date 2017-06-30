@@ -30,9 +30,9 @@
             <td ng-if="actionsEnabled">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn btn-primary" ng-click="performAction('e',row)">Edit</button>
-                        <button class="btn btn-success" ng-click="performAction('v',row)">View</button>
-                        <button class="btn btn-danger" ng-click="performAction('r',row)">Remove</button>
+                        <button class="btn btn-primary" ng-click="performAction('e',row,$event)">Edit</button>
+                        <button class="btn btn-success" ng-click="performAction('v',row,$event)">View</button>
+                        <button class="btn btn-danger" ng-click="performAction('r',row,$event)">Remove</button>
                     </div>
 
                 </div>
