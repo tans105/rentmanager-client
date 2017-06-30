@@ -1,0 +1,49 @@
+.coffee {
+    height: 50px;
+    width: 40px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: linear-gradient(to bottom left, #795548, #795548);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+}
+
+.coffee:before {
+    position: absolute;
+    content: "";
+    right: -15px;
+    top: 5px;
+    height: 25px;
+    width: 10px;
+    background: transparent;
+    border: 5px solid #795548;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid #795548;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 1;
+}
+
+.coffee:after {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 30px;
+    background: #dcdcdc;
+    border-radius: 4px;
+    top: -30px;
+    box-shadow: 35px 0px 0 #dcdcdc, 17.5px -15px 0 #dcdcdc;
+    animation: steam 3s ease infinite;
+    opacity: 1;
+}
+
+@keyframes steam {
+    100% {
+        top: -40px;
+        background: #eeeeee;
+        box-shadow: 35px 0px 0 #eeeeee, 17.5px -15px 0 #eeeeee;
+        opacity: 0.25;
+    }
+}
