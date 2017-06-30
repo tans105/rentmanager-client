@@ -1,6 +1,6 @@
 'use strict';
 
-appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $mdDialog, $timeout, $scope, $state, $cookies, NotificationService, AppService, UserManagementService, $log) {
+appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $mdDialog, $timeout, $scope, $state, $cookies, NotificationUtil, AppService, UserManagementService, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
 
@@ -23,7 +23,7 @@ appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $mdDia
                 $scope.rowCollection = angular.copy(data).splice(0, rowsPerPage);
             }
             else {
-                NotificationService.notify(false, 'Something went wrong, Contact Admin!', 'top', 'left');
+                NotificationUtil.notify(false, 'Something went wrong, Contact Admin!', 'top', 'left');
             }
         }
         $rootScope.loading = true;

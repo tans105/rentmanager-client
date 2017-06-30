@@ -2,7 +2,7 @@
  * Created by tanmay on 30/6/17.
  */
 /*
-The utility will provide notification based on rest service response
+ The utility will provide notification based on rest service response
  */
 'use strict';
 /**
@@ -11,7 +11,7 @@ The utility will provide notification based on rest service response
  * @param: x : left/right
  * @param y : top/bottom
  */
-appModule.service('NotificationService', function (Notification) {
+appModule.service('NotificationUtil', function (Notification) {
 
     this.notify = function (isSuccess, msg, x, y) {
         if (isSuccess) {

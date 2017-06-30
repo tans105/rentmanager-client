@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('PersonalDetailsCtrl', function (NotificationService, $rootScope, $scope, $state, $cookies, personalDetailsService, $log) {
+appModule.controller('PersonalDetailsCtrl', function (NotificationUtil, $rootScope, $scope, $state, $cookies, personalDetailsService, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.activateModule("personalDetails");
@@ -40,7 +40,7 @@ appModule.controller('PersonalDetailsCtrl', function (NotificationService, $root
 
             }
             else {
-                NotificationService.notify(false, 'Failed to load profile, Login again!', 'top', 'left');
+                NotificationUtil.notify(false, 'Failed to load profile, Login again!', 'top', 'left');
             }
         }
 
@@ -50,16 +50,16 @@ appModule.controller('PersonalDetailsCtrl', function (NotificationService, $root
             $log.warn("<--PROFILE STORE RESPONSE-->");
             if (angular.isDefined(response) && response.status == 200) {
                 if (response.data.success) {
-                    NotificationService.notify(true, response.data.responseMsg, 'top', 'left');
+                    NotificationUtil.notify(true, response.data.responseMsg, 'top', 'left');
                     $log.info(response);
                 }
                 else {
-                    NotificationService.notify(false, response.data.responseMsg, 'top', 'left');
+                    NotificationUtil.notify(false, response.data.responseMsg, 'top', 'left');
                     $log.info(response);
                 }
 
             } else {
-                NotificationService.notify(false, 'Profile Update Failed, Contact Admin!', 'top', 'left');
+                NotificationUtil.notify(false, 'Profile Update Failed, Contact Admin!', 'top', 'left');
                 $log.info(response);
             }
         }
