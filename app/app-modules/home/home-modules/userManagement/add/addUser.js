@@ -6,6 +6,12 @@
 appModule.controller('AddUserCtrl', function ($rootScope, NotificationUtil, $scope, $state, UserManagementService, $cookies, $parse, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
+        $scope.moduleTitle = "Add User";
+        $scope.headerButton = {
+            active: true,
+            buttonTransitionState: 'home.userManagement.details',
+            buttonName: 'Back'
+        };
         $scope.roleId = cookieData.roleId;
         var statePlaceholder = "Select Native State";
         var idproofPlaceholder = "Select Id proof";

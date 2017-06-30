@@ -4,6 +4,8 @@
 appModule.controller('PersonalDetailsCtrl', function (NotificationUtil, $rootScope, $scope, $state, $cookies, personalDetailsService, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
+        $scope.moduleTitle = "Update Profile";
+
         $scope.activateModule("personalDetails");
         $scope.roleId = cookieData.roleId;
         var personalDetails = null;

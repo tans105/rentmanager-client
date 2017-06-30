@@ -4,6 +4,13 @@ appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $mdDia
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
 
+        $scope.moduleTitle = "User Management";
+        $scope.headerButton = {
+            active: true,
+            buttonTransitionState: 'home.userManagement.addUser',
+            buttonName: 'Add User'
+        };
+
         /*Table init*/
         $scope.actionsEnabled = undefined;
         $scope.rowCollection = undefined;
