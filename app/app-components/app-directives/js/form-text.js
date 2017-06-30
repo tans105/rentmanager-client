@@ -10,6 +10,6 @@ appModule.directive('formText', function () {
             model:'='
         },
         replace:true,
-        templateUrl: 'custom-directives/templates/form-text.tpl.html',
+        templateUrl: 'app-components/app-directives/templates/form-text.tpl.html',
     };
 });

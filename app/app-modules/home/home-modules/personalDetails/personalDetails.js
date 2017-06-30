@@ -1,7 +1,7 @@
 'use strict';
 
 
-appModule.controller('PersonalDetailsCtrl', function ($rootScope, $scope, $state, $cookies, Notification, personalDetailsService, $log) {
+appModule.controller('PersonalDetailsCtrl', function (NotificationService, $rootScope, $scope, $state, $cookies, personalDetailsService, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.activateModule("personalDetails");
@@ -40,11 +40,7 @@ appModule.controller('PersonalDetailsCtrl', function ($rootScope, $scope, $state
 
             }
             else {
-                Notification.error({
-                    message: 'Failed to load profile, Login again!',
-                    positionY: 'top',
-                    positionX: 'left'
-                });
+                NotificationService.notify(false, 'Failed to load profile, Login again!', 'top', 'left');
             }
         }
 
@@ -54,20 +50,16 @@ appModule.controller('PersonalDetailsCtrl', function ($rootScope, $scope, $state
             $log.warn("<--PROFILE STORE RESPONSE-->");
             if (angular.isDefined(response) && response.status == 200) {
                 if (response.data.success) {
-                    Notification.success({message: response.data.responseMsg, positionY: 'top', positionX: 'left'});
+                    NotificationService.notify(true, response.data.responseMsg, 'top', 'left');
                     $log.info(response);
                 }
                 else {
-                    Notification.error({message: response.data.responseMsg, positionY: 'top', positionX: 'left'});
+                    NotificationService.notify(false, response.data.responseMsg, 'top', 'left');
                     $log.info(response);
                 }
 
             } else {
-                Notification.error({
-                    message: 'Profile Update Failed, Contact Admin!',
-                    positionY: 'top',
-                    positionX: 'left'
-                });
+                NotificationService.notify(false, 'Profile Update Failed, Contact Admin!', 'top', 'left');
                 $log.info(response);
             }
         }

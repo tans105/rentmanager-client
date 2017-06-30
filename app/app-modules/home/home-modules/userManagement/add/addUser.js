@@ -3,7 +3,7 @@
  */
 'use strict';
 
-appModule.controller('AddUserCtrl', function ($rootScope, $scope, $state, UserManagementService, $cookies, Notification, $parse, $log) {
+appModule.controller('AddUserCtrl', function ($rootScope, NotificationService, $scope, $state, UserManagementService, $cookies, $parse, $log) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
         $scope.roleId = cookieData.roleId;
@@ -43,11 +43,7 @@ appModule.controller('AddUserCtrl', function ($rootScope, $scope, $state, UserMa
 
             }
             else {
-                Notification.error({
-                    message: 'Failed to load profile, Login again!',
-                    positionY: 'top',
-                    positionX: 'left'
-                });
+                NotificationService.notify(false, 'Failed to load profile, Login again!', 'top', 'left');
             }
         }
         $rootScope.loading = true;
@@ -59,18 +55,10 @@ appModule.controller('AddUserCtrl', function ($rootScope, $scope, $state, UserMa
             $log.warn("<--NEW USER STORE-->");
             $log.info(response);
             if (response.data.success) {
-                Notification.success({
-                    message: 'User ' + response.data.userId + ' created successfully',
-                    positionY: 'top',
-                    positionX: 'left'
-                });
+                NotificationService.notify(true, 'User ' + response.data.userId + ' created successfully', 'top', 'left');
             }
             else {
-                Notification.error({
-                    message: response.data.responseMsg,
-                    positionY: 'top',
-                    positionX: 'left'
-                });
+                NotificationService.notify(false, response.data.responseMsg, 'top', 'left');
             }
         }
 

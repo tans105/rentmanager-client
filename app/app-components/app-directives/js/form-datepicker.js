@@ -10,7 +10,7 @@ appModule.directive('formDatepicker', function () {
             model:'='
         },
         replace:true,
-        templateUrl: 'custom-directives/templates/form-datepicker.tpl.html',
+        templateUrl: 'app-components/app-directives/templates/form-datepicker.tpl.html',
         controller: function ($scope) {
             $scope.popup2 = {
                 opened:false

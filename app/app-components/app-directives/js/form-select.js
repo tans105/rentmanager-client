@@ -11,7 +11,7 @@ appModule.directive('formSelect', function () {
             model:'='
         },
         replace:true,
-        templateUrl: 'custom-directives/templates/form-select.tpl.html',
+        templateUrl: 'app-components/app-directives/templates/form-select.tpl.html',
         controller: function($scope){
             if($scope.model==null)
             $scope.model = $scope.stack.placeholder;
