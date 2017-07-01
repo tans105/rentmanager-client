@@ -13,8 +13,13 @@
                     <div><h6 class="welcome-hostel"> {{hostelName}}</h6></div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a class="logout" ng-click="logout()">
-                        <i class="fa fa-power-off" aria-hidden="true"></i> </a>
+                    <div class="dropdown">
+                        <i class="fa fa-caret-down dropbtn logout" aria-hidden="true"></i>
+                        <div class="dropdown-content">
+                            <a href="#" ng-click="logout()">Sign Out</a>
+                            <a href="#">Change Password</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
