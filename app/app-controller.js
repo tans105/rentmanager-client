@@ -67,24 +67,23 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
             targetEvent: event,
             fullscreen: $scope.customFullscreen,
             clickOutsideToClose: true,
-        }).then(function (answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
-        }, function () {
-            $scope.status = 'You cancelled the dialog.';
         });
     }
 
     function ChangePasswordController($scope, $mdDialog) {
-        $scope.hide = function() {
+        $scope.submitChangePasswordRequest = function () {
+            console.log($scope.oldPassword);
+            console.log($scope.newPassword);
+            console.log($scope.confirmPassword);
+            // $mdDialog.hide();
+        }
+
+        $scope.hide = function () {
             $mdDialog.hide();
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $mdDialog.cancel();
-        };
-
-        $scope.answer = function(answer) {
-            $mdDialog.hide(answer);
         };
     }
 
