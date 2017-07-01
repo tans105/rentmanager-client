@@ -15,7 +15,7 @@ appModule.controller('UserManagementCtrl', function ($rootScope, $filter, $mdDia
         $scope.actionsEnabled = undefined;
         $scope.rowCollection = undefined;
         var data = undefined;
-        var rowsPerPage = 3;
+        var rowsPerPage = 10;
         $scope.currentPage = 1;
         /************/
 

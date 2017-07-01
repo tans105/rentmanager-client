@@ -61,6 +61,7 @@ appModule.controller('AddUserCtrl', function ($rootScope, NotificationUtil, $sco
             $log.warn("<--NEW USER STORE-->");
             $log.info(response);
             if (response.data.success) {
+                $state.go('home.userManagement.details');
                 NotificationUtil.notify(true, 'User ' + response.data.userId + ' created successfully', 'top', 'left');
             }
             else {

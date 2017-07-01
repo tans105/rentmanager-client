@@ -3,7 +3,7 @@
  */
 'use strict';
 
-appModule.service('loginService', function ($http, jwtHelper, $cookies) {
+appModule.service('loginService', function ($http, jwtHelper, $cookies, AppService) {
     var cookieValidDuration = 30;
 
     this.loginValidation = function (userId, pwd, callback) {
@@ -26,11 +26,12 @@ appModule.service('loginService', function ($http, jwtHelper, $cookies) {
         var today = new Date();
         var expiresValue = new Date(today);
         expiresValue.setMinutes(today.getMinutes() + cookieValidDuration);
+        var displayName = this.getDisplayNameForUser(tokenPayload);
         var cookieData = {
             "isLoggedIn": true,
             "token": data.data.token,
             "moduleList": data.data.moduleList,
-            "loggedInUser": tokenPayload.firstName + " " + tokenPayload.middleName + " " + tokenPayload.lastName,
+            "loggedInUser": displayName,
             "role": tokenPayload.role,
             "roleId": tokenPayload.roleId,
             "hostelName": tokenPayload.hostelName
@@ -38,5 +39,18 @@ appModule.service('loginService', function ($http, jwtHelper, $cookies) {
         $cookies.putObject("cookieData", cookieData, {'expires': expiresValue});
     }
 
-
+    this.getDisplayNameForUser = function (tokenPayload) {
+        if (AppService.isUndefinedOrNull(tokenPayload.middleName) && AppService.isUndefinedOrNull(tokenPayload.lastName)) {
+            return tokenPayload.firstName;
+        }
+        else if (AppService.isUndefinedOrNull(tokenPayload.middleName) && !AppService.isUndefinedOrNull(tokenPayload.lastName)) {
+            return tokenPayload.firstName + " " + tokenPayload.lastName;
+        }
+        else if (AppService.isUndefinedOrNull(tokenPayload.lastName) && !AppService.isUndefinedOrNull(tokenPayload.middleName)) {
+            return tokenPayload.firstName + " " + tokenPayload.middleName;
+        }
+        else {
+            return tokenPayload.firstName + " " + tokenPayload.middleName + " " + tokenPayload.lastName;
+        }
+    }
 });

@@ -43,4 +43,8 @@ appModule.service('AppService', function ($rootScope) {
         }
         return formattedData;
     }
+
+    this.isUndefinedOrNull=function(val) {
+        return angular.isUndefined(val) || val === null
+    }
 });
