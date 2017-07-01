@@ -1,9 +1,10 @@
 'use strict';
 
 
-appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies) {
+appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookies, $mdDialog) {
     var cookieData = $cookies.getObject('cookieData');
     if (cookieData) {
+
         var currentLocation = $state.current.name;
         if (angular.isUndefined(currentLocation)) {
             $scope.selectedModule = cookieData.moduleList[0];
@@ -38,6 +39,7 @@ appModule.controller('HomeCtrl', function ($scope, $state, loginService, $cookie
                 return false;
             }
         }
+
 
     }
 

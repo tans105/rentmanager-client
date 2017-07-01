@@ -84,10 +84,11 @@ footer a:hover,
     text-align: right;
     font-weight: bolder;
 }
+
 .welcome-hostel {
     text-align: right;
     font-weight: bolder;
-    color : wheat;
+    color: wheat;
 }
 
 .mandatory {
@@ -106,10 +107,15 @@ footer a:hover,
     z-index: 99;
     text-align: center;
 }
+
 #loading-image {
     position: absolute;
     top: 250px;
     left: 550px;
     z-index: 600;
+}
+
+.change-password-dialog {
+    min-width: 50%;
 }
 

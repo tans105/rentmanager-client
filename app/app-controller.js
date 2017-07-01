@@ -3,7 +3,7 @@
  */
 'use strict';
 
-appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope, $interval) {
+appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope, $interval, $mdDialog) {
 
     $rootScope.$on('$stateChangeSuccess',
         function (event, toState, toParams, fromState, fromParams) {
@@ -15,7 +15,7 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
                 $state.go('login');
             }
         });
-    $rootScope.loading=false;
+    $rootScope.loading = false;
 
     $scope.isLoggedIn = false;
     $scope.role = '';
@@ -57,7 +57,36 @@ appModule.controller('myAppCtrl', function ($scope, $cookies, $state, $rootScope
 
     $scope.$on('show-loader', function (event, data) {
         $scope.visibleLoader = data;
-    })
+    });
+
+    $scope.changePassword = function (event) {
+        $mdDialog.show({
+            controller: ChangePasswordController,
+            templateUrl: 'templates/change-password.tpl.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            fullscreen: $scope.customFullscreen,
+            clickOutsideToClose: true,
+        }).then(function (answer) {
+            $scope.status = 'You said the information was "' + answer + '".';
+        }, function () {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    }
+
+    function ChangePasswordController($scope, $mdDialog) {
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+
+        $scope.answer = function(answer) {
+            $mdDialog.hide(answer);
+        };
+    }
 
 
 });
